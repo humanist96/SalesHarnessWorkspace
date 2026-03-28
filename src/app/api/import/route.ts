@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
 import { auth } from '@/lib/auth'
-import { db, activities, organizations, importBatches } from '@/lib/db'
+import { db, activities, organizations, importBatches, deals } from '@/lib/db'
 import { eq, ilike, isNull, and } from 'drizzle-orm'
 import { createApiResponse, createApiError } from '@/lib/utils/api'
 import { executeActivityPipeline } from '@/lib/pipeline/orchestrator'
@@ -93,6 +93,38 @@ export async function POST(request: NextRequest) {
         })
       } catch {
         // AI 실패는 무시, 활동 자체는 저장됨
+      }
+
+      // 딜 자동 생성: 계약/체결 키워드 + 금액 감지
+      const content = row.content.trim()
+      const contractKeywords = ['계약', '체결', '갱신', '연장']
+      const hasContractKeyword = contractKeywords.some((kw) => content.includes(kw))
+      const amountMatch = content.match(/(\d+\.?\d*)\s*억/)
+
+      if (hasContractKeyword && amountMatch && organizationId) {
+        const amountInWon = Math.round(parseFloat(amountMatch[1]) * 100_000_000)
+        const isYearly = content.includes('/년') || content.includes('연간')
+
+        // 이 고객사에 이미 비슷한 딜이 없는 경우에만 생성
+        const [existingDeal] = await db.select()
+          .from(deals)
+          .where(and(eq(deals.organizationId, organizationId), eq(deals.userId, session.user.id), eq(deals.amount, amountInWon)))
+          .limit(1)
+
+        if (!existingDeal) {
+          const [newDeal] = await db.insert(deals).values({
+            userId: session.user.id,
+            organizationId,
+            title: `${row.customer?.trim() || '고객'} — ${content.slice(0, 50)}`,
+            stage: content.includes('체결') || content.includes('완료') ? 'contract' : 'negotiation',
+            amount: amountInWon,
+            term: isYearly ? 'yearly' : 'one_time',
+            source: 'csv_import',
+          }).returning()
+
+          // 활동에 딜 연결
+          await db.update(activities).set({ dealId: newDeal.id }).where(eq(activities.id, activity.id))
+        }
       }
 
       successCount++

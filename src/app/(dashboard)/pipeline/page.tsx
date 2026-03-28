@@ -252,6 +252,8 @@ function DealForm({
   const [amount, setAmount] = useState('')
   const [term, setTerm] = useState('yearly')
   const [expectedCloseDate, setExpectedCloseDate] = useState('')
+  const [contractStartDate, setContractStartDate] = useState('')
+  const [contractEndDate, setContractEndDate] = useState('')
   const [description, setDescription] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -280,6 +282,8 @@ function DealForm({
           amount: amount ? Math.round(parseFloat(amount) * 100_000_000) : null,
           term,
           expectedCloseDate: expectedCloseDate || null,
+          contractStartDate: contractStartDate || null,
+          contractEndDate: contractEndDate || null,
           description: description || null,
         }),
       })
@@ -340,6 +344,19 @@ function DealForm({
           <div>
             <label className="mb-1 block text-[12px] font-medium text-slate-400">예상 계약일</label>
             <input type="date" value={expectedCloseDate} onChange={(e) => setExpectedCloseDate(e.target.value)}
+              className="w-full rounded-lg border border-white/[0.06] bg-white/[0.03] px-3 py-2 text-[13px] text-white focus:border-amber-500/30 focus:outline-none" />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="mb-1 block text-[12px] font-medium text-slate-400">계약 시작일</label>
+            <input type="date" value={contractStartDate} onChange={(e) => setContractStartDate(e.target.value)}
+              className="w-full rounded-lg border border-white/[0.06] bg-white/[0.03] px-3 py-2 text-[13px] text-white focus:border-amber-500/30 focus:outline-none" />
+          </div>
+          <div>
+            <label className="mb-1 block text-[12px] font-medium text-slate-400">계약 종료일</label>
+            <input type="date" value={contractEndDate} onChange={(e) => setContractEndDate(e.target.value)}
               className="w-full rounded-lg border border-white/[0.06] bg-white/[0.03] px-3 py-2 text-[13px] text-white focus:border-amber-500/30 focus:outline-none" />
           </div>
         </div>

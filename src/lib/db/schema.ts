@@ -104,7 +104,7 @@ export const activities = pgTable('activities', {
   userId: uuid('user_id').notNull().references(() => users.id),
   organizationId: uuid('organization_id').references(() => organizations.id),
   contactId: uuid('contact_id').references(() => contacts.id),
-  dealId: uuid('deal_id'),
+  dealId: uuid('deal_id').references(() => deals.id),
 
   type: text('type', {
     enum: ['call', 'email', 'visit', 'meeting', 'contract', 'billing', 'inspection', 'other'],
@@ -132,7 +132,7 @@ export const reminders = pgTable('reminders', {
   userId: uuid('user_id').notNull().references(() => users.id),
   activityId: uuid('activity_id').references(() => activities.id),
   organizationId: uuid('organization_id').references(() => organizations.id),
-  dealId: uuid('deal_id'),
+  dealId: uuid('deal_id').references(() => deals.id),
 
   title: text('title').notNull(),
   description: text('description'),
