@@ -1,13 +1,31 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-03-28T01:48:29.523Z",
+  "lastUpdated": "2026-03-28T08:32:12.904Z",
   "activeFeatures": [
     "SalesHarnessWorkspace",
     "(dashboard)",
     "layout",
     "openai",
     "prompts",
-    "supabase"
+    "supabase",
+    "providers",
+    "stores",
+    "validations",
+    "(auth)",
+    "login",
+    "documents",
+    "new",
+    "[id]",
+    "organizations",
+    "meetings",
+    "pipeline",
+    "intelligence",
+    "settings",
+    "db",
+    "auth",
+    "generate",
+    "products",
+    "contacts"
   ],
   "primaryFeature": "SalesHarnessWorkspace",
   "features": {
@@ -20,9 +38,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T01:47:20.163Z",
-        "lastUpdated": "2026-03-28T01:48:29.523Z"
+        "lastUpdated": "2026-03-28T08:19:32.345Z"
       },
-      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/types/index.ts"
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/drizzle.config.ts"
     },
     "(dashboard)": {
       "phase": "do",
@@ -33,9 +51,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T01:47:35.666Z",
-        "lastUpdated": "2026-03-28T01:47:40.905Z"
+        "lastUpdated": "2026-03-28T02:36:07.545Z"
       },
-      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/(dashboard)/page.tsx"
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/(dashboard)/loading.tsx"
     },
     "layout": {
       "phase": "do",
@@ -46,7 +64,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T01:47:51.722Z",
-        "lastUpdated": "2026-03-28T01:47:54.938Z"
+        "lastUpdated": "2026-03-28T02:12:23.467Z"
       },
       "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/components/layout/Header.tsx"
     },
@@ -72,9 +90,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T01:48:13.575Z",
-        "lastUpdated": "2026-03-28T01:48:13.575Z"
+        "lastUpdated": "2026-03-28T08:30:26.863Z"
       },
-      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/lib/openai/prompts/system.ts"
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/lib/openai/prompts/report.ts"
     },
     "supabase": {
       "phase": "do",
@@ -88,6 +106,240 @@
         "lastUpdated": "2026-03-28T01:48:19.042Z"
       },
       "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/lib/supabase/server.ts"
+    },
+    "providers": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T02:33:26.169Z",
+        "lastUpdated": "2026-03-28T02:33:26.169Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/components/providers/QueryProvider.tsx"
+    },
+    "stores": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T02:33:27.968Z",
+        "lastUpdated": "2026-03-28T02:33:27.968Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/lib/stores/ui-store.ts"
+    },
+    "validations": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T02:33:36.891Z",
+        "lastUpdated": "2026-03-28T02:39:34.026Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/lib/validations/resolver.ts"
+    },
+    "(auth)": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T02:35:00.324Z",
+        "lastUpdated": "2026-03-28T02:35:00.324Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/(auth)/layout.tsx"
+    },
+    "login": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T02:35:12.504Z",
+        "lastUpdated": "2026-03-28T08:12:38.972Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/(auth)/login/page.tsx"
+    },
+    "documents": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T02:35:21.899Z",
+        "lastUpdated": "2026-03-28T08:31:40.942Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/features/documents/hooks/useDocumentGenerator.ts"
+    },
+    "new": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T02:35:32.953Z",
+        "lastUpdated": "2026-03-28T08:32:12.904Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/(dashboard)/documents/new/page.tsx"
+    },
+    "[id]": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T02:35:36.159Z",
+        "lastUpdated": "2026-03-28T08:30:17.913Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/contacts/[id]/route.ts"
+    },
+    "organizations": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T02:35:45.981Z",
+        "lastUpdated": "2026-03-28T08:31:07.799Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/organizations/route.ts"
+    },
+    "meetings": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T02:35:52.178Z",
+        "lastUpdated": "2026-03-28T02:35:52.178Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/(dashboard)/meetings/page.tsx"
+    },
+    "pipeline": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T02:35:55.408Z",
+        "lastUpdated": "2026-03-28T02:35:55.408Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/(dashboard)/pipeline/page.tsx"
+    },
+    "intelligence": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T02:35:57.773Z",
+        "lastUpdated": "2026-03-28T02:35:57.773Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/(dashboard)/intelligence/page.tsx"
+    },
+    "settings": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T02:36:00.743Z",
+        "lastUpdated": "2026-03-28T02:36:00.743Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/(dashboard)/settings/page.tsx"
+    },
+    "db": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T08:11:51.366Z",
+        "lastUpdated": "2026-03-28T08:11:53.343Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/lib/db/index.ts"
+    },
+    "auth": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T08:12:04.996Z",
+        "lastUpdated": "2026-03-28T08:12:09.630Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/lib/auth/actions.ts"
+    },
+    "generate": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T08:29:43.160Z",
+        "lastUpdated": "2026-03-28T08:30:53.062Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/ai/generate/route.ts"
+    },
+    "products": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T08:30:11.004Z",
+        "lastUpdated": "2026-03-28T08:30:11.004Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/products/route.ts"
+    },
+    "contacts": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T08:30:14.370Z",
+        "lastUpdated": "2026-03-28T08:30:14.370Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/contacts/route.ts"
     }
   },
   "pipeline": {
@@ -98,7 +350,7 @@
   "session": {
     "startedAt": "2026-03-28T00:23:14.845Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-03-28T01:48:29.523Z"
+    "lastActivity": "2026-03-28T08:32:12.904Z"
   },
   "history": [
     {
@@ -176,6 +428,516 @@
     {
       "timestamp": "2026-03-28T01:48:29.523Z",
       "feature": "SalesHarnessWorkspace",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:11:35.556Z",
+      "feature": "SalesHarnessWorkspace",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:11:46.821Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:12:07.853Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:12:23.467Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:12:29.603Z",
+      "feature": "(dashboard)",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:13:40.334Z",
+      "feature": "(dashboard)",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:13:57.678Z",
+      "feature": "(dashboard)",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:33:26.169Z",
+      "feature": "providers",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:33:27.968Z",
+      "feature": "stores",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:33:32.688Z",
+      "feature": "SalesHarnessWorkspace",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:33:36.891Z",
+      "feature": "validations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:33:40.071Z",
+      "feature": "validations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:33:40.782Z",
+      "feature": "validations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:33:49.372Z",
+      "feature": "SalesHarnessWorkspace",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:33:50.741Z",
+      "feature": "SalesHarnessWorkspace",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:34:00.831Z",
+      "feature": "SalesHarnessWorkspace",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:34:04.894Z",
+      "feature": "SalesHarnessWorkspace",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:34:16.870Z",
+      "feature": "SalesHarnessWorkspace",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:34:43.408Z",
+      "feature": "SalesHarnessWorkspace",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:34:46.445Z",
+      "feature": "SalesHarnessWorkspace",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:34:47.954Z",
+      "feature": "SalesHarnessWorkspace",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:35:00.324Z",
+      "feature": "(auth)",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:35:12.504Z",
+      "feature": "login",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:35:21.899Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:35:32.953Z",
+      "feature": "new",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:35:36.159Z",
+      "feature": "[id]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:35:38.623Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:35:45.981Z",
+      "feature": "organizations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:35:49.069Z",
+      "feature": "[id]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:35:52.178Z",
+      "feature": "meetings",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:35:55.408Z",
+      "feature": "pipeline",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:35:57.773Z",
+      "feature": "intelligence",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:36:00.743Z",
+      "feature": "settings",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:36:05.165Z",
+      "feature": "(dashboard)",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:36:07.545Z",
+      "feature": "(dashboard)",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:36:11.119Z",
+      "feature": "SalesHarnessWorkspace",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:36:42.988Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:37:06.121Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:37:16.777Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:37:22.187Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:37:47.184Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:37:58.261Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:38:19.550Z",
+      "feature": "new",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:38:43.736Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:38:59.131Z",
+      "feature": "validations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:39:03.900Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:39:16.125Z",
+      "feature": "validations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:39:34.026Z",
+      "feature": "validations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:39:50.775Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:40:00.903Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T02:40:17.980Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:11:51.366Z",
+      "feature": "db",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:11:53.343Z",
+      "feature": "db",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:11:54.130Z",
+      "feature": "SalesHarnessWorkspace",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:12:04.996Z",
+      "feature": "auth",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:12:09.630Z",
+      "feature": "auth",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:12:11.727Z",
+      "feature": "SalesHarnessWorkspace",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:12:38.972Z",
+      "feature": "login",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:12:45.666Z",
+      "feature": "SalesHarnessWorkspace",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:12:51.824Z",
+      "feature": "SalesHarnessWorkspace",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:19:32.345Z",
+      "feature": "SalesHarnessWorkspace",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:27:44.070Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:27:52.760Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:27:56.893Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:28:05.427Z",
+      "feature": "organizations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:28:11.616Z",
+      "feature": "organizations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:28:23.375Z",
+      "feature": "organizations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:28:50.330Z",
+      "feature": "organizations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:28:50.766Z",
+      "feature": "organizations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:29:43.160Z",
+      "feature": "generate",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:29:55.137Z",
+      "feature": "organizations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:30:04.793Z",
+      "feature": "[id]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:30:08.510Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:30:10.277Z",
+      "feature": "[id]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:30:11.004Z",
+      "feature": "products",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:30:14.370Z",
+      "feature": "contacts",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:30:17.913Z",
+      "feature": "[id]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:30:26.863Z",
+      "feature": "prompts",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:30:47.729Z",
+      "feature": "generate",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:30:53.062Z",
+      "feature": "generate",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:31:07.799Z",
+      "feature": "organizations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:31:40.942Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:31:54.785Z",
+      "feature": "new",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:32:05.146Z",
+      "feature": "new",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:32:12.904Z",
+      "feature": "new",
       "phase": "do",
       "action": "updated"
     }

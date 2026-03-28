@@ -1,5 +1,6 @@
 import { Sidebar } from '@/components/layout/Sidebar'
 import { Header } from '@/components/layout/Header'
+import { AuroraBackground } from '@/components/layout/AuroraBackground'
 
 export default function DashboardLayout({
   children,
@@ -7,7 +8,8 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen overflow-hidden">
+      <AuroraBackground />
       <Sidebar />
       <div className="flex flex-1 flex-col overflow-hidden">
         <Header />
