@@ -132,6 +132,7 @@ export const reminders = pgTable('reminders', {
   userId: uuid('user_id').notNull().references(() => users.id),
   activityId: uuid('activity_id').references(() => activities.id),
   organizationId: uuid('organization_id').references(() => organizations.id),
+  dealId: uuid('deal_id'),
 
   title: text('title').notNull(),
   description: text('description'),
@@ -162,6 +163,41 @@ export const importBatches = pgTable('import_batches', {
   startedAt: timestamp('started_at', { withTimezone: true }),
   completedAt: timestamp('completed_at', { withTimezone: true }),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+})
+
+// ==================
+// Phase 3: Deals (Pipeline/CRM)
+// ==================
+
+export const deals = pgTable('deals', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').notNull().references(() => users.id),
+  organizationId: uuid('organization_id').notNull().references(() => organizations.id),
+  contactId: uuid('contact_id').references(() => contacts.id),
+
+  title: text('title').notNull(),
+  description: text('description'),
+
+  stage: text('stage', {
+    enum: ['discovery', 'proposal', 'negotiation', 'contract', 'billing', 'closed_won', 'closed_lost'],
+  }).notNull().default('discovery'),
+
+  amount: bigint('amount', { mode: 'number' }),
+  currency: text('currency').notNull().default('KRW'),
+  term: text('term', { enum: ['one_time', 'monthly', 'yearly'] }).notNull().default('yearly'),
+
+  aiScore: integer('ai_score'),
+  aiScoreReason: text('ai_score_reason'),
+
+  expectedCloseDate: date('expected_close_date'),
+  contractStartDate: date('contract_start_date'),
+  contractEndDate: date('contract_end_date'),
+  closedAt: timestamp('closed_at', { withTimezone: true }),
+
+  source: text('source', { enum: ['manual', 'csv_import', 'ai_extracted'] }).notNull().default('manual'),
+
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
 })
 
 // ==================
@@ -207,3 +243,5 @@ export type NewReminder = typeof reminders.$inferInsert
 export type ImportBatch = typeof importBatches.$inferSelect
 export type Meeting = typeof meetings.$inferSelect
 export type NewMeeting = typeof meetings.$inferInsert
+export type Deal = typeof deals.$inferSelect
+export type NewDeal = typeof deals.$inferInsert

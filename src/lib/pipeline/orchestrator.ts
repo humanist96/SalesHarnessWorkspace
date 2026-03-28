@@ -1,5 +1,5 @@
-import { db, activities, reminders, organizations, contacts } from '@/lib/db'
-import { eq, ilike, isNull, and } from 'drizzle-orm'
+import { db, activities, reminders, organizations, contacts, deals } from '@/lib/db'
+import { eq, ilike, isNull, and, desc } from 'drizzle-orm'
 import { classifyActivity, type ClassificationResult } from './classify'
 
 interface PipelineContext {
@@ -87,6 +87,42 @@ export async function executeActivityPipeline(ctx: PipelineContext): Promise<Pip
 
     await db.insert(reminders).values(reminderValues)
     remindersCreated = reminderValues.length
+  }
+
+  // Stage 3b: 금액 감지 시 딜 자동 갱신
+  if (classification.amounts.length > 0) {
+    const orgId = ctx.organizationId
+    if (orgId) {
+      // 해당 고객사의 최신 딜 찾기
+      const [existingDeal] = await db.select()
+        .from(deals)
+        .where(and(
+          eq(deals.organizationId, orgId),
+          eq(deals.userId, ctx.userId),
+        ))
+        .orderBy(desc(deals.updatedAt))
+        .limit(1)
+
+      if (existingDeal) {
+        // 기존 딜의 금액 갱신
+        const largestAmount = classification.amounts.reduce((max, a) => {
+          const valueInWon = a.unit === '억' ? a.value * 100_000_000 : a.unit === '만' ? a.value * 10_000 : a.value
+          return valueInWon > max ? valueInWon : max
+        }, 0)
+
+        if (largestAmount > 0) {
+          await db.update(deals).set({
+            amount: largestAmount,
+            updatedAt: new Date(),
+          }).where(eq(deals.id, existingDeal.id))
+
+          // 활동에 딜 연결
+          await db.update(activities).set({
+            dealId: existingDeal.id,
+          }).where(eq(activities.id, ctx.activityId))
+        }
+      }
+    }
   }
 
   // Stage 4: 파이프라인 완료 마킹
