@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-03-28T08:32:12.904Z",
+  "lastUpdated": "2026-03-28T12:50:01.783Z",
   "activeFeatures": [
     "SalesHarnessWorkspace",
     "(dashboard)",
@@ -25,22 +25,28 @@
     "auth",
     "generate",
     "products",
-    "contacts"
+    "contacts",
+    "activities",
+    "reminders",
+    "import",
+    "Phase 2 Gap Analysis — SalesHarnessWorkspace",
+    "dashboard",
+    "summary",
+    "deals",
+    "score",
+    "forecast",
+    "contract-expiry",
+    "reports"
   ],
   "primaryFeature": "SalesHarnessWorkspace",
   "features": {
     "SalesHarnessWorkspace": {
-      "phase": "do",
-      "phaseNumber": 3,
-      "matchRate": null,
-      "iterationCount": 0,
-      "requirements": [],
-      "documents": {},
-      "timestamps": {
-        "started": "2026-03-28T01:47:20.163Z",
-        "lastUpdated": "2026-03-28T08:19:32.345Z"
-      },
-      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/drizzle.config.ts"
+      "phase": "archived",
+      "matchRate": 98,
+      "iterationCount": 4,
+      "startedAt": "2026-03-28T01:47:20.163Z",
+      "archivedAt": "2026-03-28T14:00:00.000Z",
+      "archivedTo": "docs/archive/2026-03/SalesHarnessWorkspace/"
     },
     "(dashboard)": {
       "phase": "do",
@@ -51,9 +57,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T01:47:35.666Z",
-        "lastUpdated": "2026-03-28T02:36:07.545Z"
+        "lastUpdated": "2026-03-28T10:17:47.149Z"
       },
-      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/(dashboard)/loading.tsx"
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/(dashboard)/page.tsx"
     },
     "layout": {
       "phase": "do",
@@ -64,9 +70,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T01:47:51.722Z",
-        "lastUpdated": "2026-03-28T02:12:23.467Z"
+        "lastUpdated": "2026-03-28T10:49:13.560Z"
       },
-      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/components/layout/Header.tsx"
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/components/layout/Sidebar.tsx"
     },
     "openai": {
       "phase": "do",
@@ -181,9 +187,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T02:35:21.899Z",
-        "lastUpdated": "2026-03-28T08:31:40.942Z"
+        "lastUpdated": "2026-03-28T08:51:44.000Z"
       },
-      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/features/documents/hooks/useDocumentGenerator.ts"
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/features/documents/components/EmailForm.tsx"
     },
     "new": {
       "phase": "do",
@@ -207,9 +213,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T02:35:36.159Z",
-        "lastUpdated": "2026-03-28T08:30:17.913Z"
+        "lastUpdated": "2026-03-28T10:48:15.753Z"
       },
-      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/contacts/[id]/route.ts"
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/reports/[id]/route.ts"
     },
     "organizations": {
       "phase": "do",
@@ -220,9 +226,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T02:35:45.981Z",
-        "lastUpdated": "2026-03-28T08:31:07.799Z"
+        "lastUpdated": "2026-03-28T10:02:40.699Z"
       },
-      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/organizations/route.ts"
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/features/organizations/components/OrganizationDetail.tsx"
     },
     "meetings": {
       "phase": "do",
@@ -233,7 +239,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T02:35:52.178Z",
-        "lastUpdated": "2026-03-28T02:35:52.178Z"
+        "lastUpdated": "2026-03-28T10:20:26.257Z"
       },
       "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/(dashboard)/meetings/page.tsx"
     },
@@ -246,7 +252,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T02:35:55.408Z",
-        "lastUpdated": "2026-03-28T02:35:55.408Z"
+        "lastUpdated": "2026-03-28T10:42:03.012Z"
       },
       "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/(dashboard)/pipeline/page.tsx"
     },
@@ -259,7 +265,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T02:35:57.773Z",
-        "lastUpdated": "2026-03-28T02:35:57.773Z"
+        "lastUpdated": "2026-03-28T10:36:26.174Z"
       },
       "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/(dashboard)/intelligence/page.tsx"
     },
@@ -272,7 +278,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T02:36:00.743Z",
-        "lastUpdated": "2026-03-28T02:36:00.743Z"
+        "lastUpdated": "2026-03-28T08:53:33.185Z"
       },
       "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/(dashboard)/settings/page.tsx"
     },
@@ -285,9 +291,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T08:11:51.366Z",
-        "lastUpdated": "2026-03-28T08:11:53.343Z"
+        "lastUpdated": "2026-03-28T12:50:01.783Z"
       },
-      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/lib/db/index.ts"
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/lib/db/schema.ts"
     },
     "auth": {
       "phase": "do",
@@ -311,9 +317,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T08:29:43.160Z",
-        "lastUpdated": "2026-03-28T08:30:53.062Z"
+        "lastUpdated": "2026-03-28T10:47:59.068Z"
       },
-      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/ai/generate/route.ts"
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/reports/generate/route.ts"
     },
     "products": {
       "phase": "do",
@@ -337,9 +343,153 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T08:30:14.370Z",
-        "lastUpdated": "2026-03-28T08:30:14.370Z"
+        "lastUpdated": "2026-03-28T09:17:57.151Z"
       },
-      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/contacts/route.ts"
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/(dashboard)/contacts/page.tsx"
+    },
+    "activities": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T09:56:05.363Z",
+        "lastUpdated": "2026-03-28T10:21:29.195Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/activities/route.ts"
+    },
+    "reminders": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T09:56:21.639Z",
+        "lastUpdated": "2026-03-28T10:25:11.149Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/reminders/route.ts"
+    },
+    "import": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T10:03:15.623Z",
+        "lastUpdated": "2026-03-28T10:42:50.046Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/import/route.ts"
+    },
+    "Phase 2 Gap Analysis — SalesHarnessWorkspace": {
+      "phase": "act",
+      "phaseNumber": 5,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T10:14:34.205Z",
+        "lastUpdated": "2026-03-28T10:14:34.205Z"
+      },
+      "previousPhase": "check",
+      "autoAdvanced": true
+    },
+    "dashboard": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T10:16:34.564Z",
+        "lastUpdated": "2026-03-28T10:16:34.564Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/dashboard/route.ts"
+    },
+    "summary": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T10:24:51.349Z",
+        "lastUpdated": "2026-03-28T10:24:51.349Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/organizations/[id]/summary/route.ts"
+    },
+    "deals": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T10:32:08.307Z",
+        "lastUpdated": "2026-03-28T10:32:08.307Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/deals/route.ts"
+    },
+    "score": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T10:34:30.303Z",
+        "lastUpdated": "2026-03-28T10:34:30.303Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/deals/[id]/score/route.ts"
+    },
+    "forecast": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T10:34:40.654Z",
+        "lastUpdated": "2026-03-28T10:34:40.654Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/deals/forecast/route.ts"
+    },
+    "contract-expiry": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T10:42:25.058Z",
+        "lastUpdated": "2026-03-28T10:42:25.058Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/cron/contract-expiry/route.ts"
+    },
+    "reports": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T10:48:07.559Z",
+        "lastUpdated": "2026-03-28T12:49:54.154Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/reports/route.ts"
     }
   },
   "pipeline": {
@@ -350,7 +500,7 @@
   "session": {
     "startedAt": "2026-03-28T00:23:14.845Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-03-28T08:32:12.904Z"
+    "lastActivity": "2026-03-28T12:50:01.783Z"
   },
   "history": [
     {
@@ -938,6 +1088,522 @@
     {
       "timestamp": "2026-03-28T08:32:12.904Z",
       "feature": "new",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:49:02.371Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:49:28.517Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:49:44.022Z",
+      "feature": "organizations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:50:02.690Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:50:16.629Z",
+      "feature": "[id]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:50:27.052Z",
+      "feature": "[id]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:50:49.166Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:50:59.772Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:51:05.737Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:51:11.810Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:51:33.166Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:51:38.938Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:51:44.000Z",
+      "feature": "documents",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:52:08.975Z",
+      "feature": "(dashboard)",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:52:16.751Z",
+      "feature": "(dashboard)",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:52:29.131Z",
+      "feature": "(dashboard)",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:52:38.074Z",
+      "feature": "(dashboard)",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:52:51.382Z",
+      "feature": "(dashboard)",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:53:19.772Z",
+      "feature": "(dashboard)",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T08:53:33.185Z",
+      "feature": "settings",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T09:17:57.151Z",
+      "feature": "contacts",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T09:18:14.074Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T09:54:24.568Z",
+      "feature": "db",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T09:54:30.958Z",
+      "feature": "db",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T09:55:26.577Z",
+      "feature": "pipeline",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T09:55:40.400Z",
+      "feature": "pipeline",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T09:56:05.363Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T09:56:21.639Z",
+      "feature": "reminders",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T09:56:57.030Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T09:57:28.329Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T09:57:55.419Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:01:12.492Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:02:00.561Z",
+      "feature": "organizations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:02:23.160Z",
+      "feature": "organizations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:02:40.699Z",
+      "feature": "organizations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:03:15.623Z",
+      "feature": "import",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:03:49.732Z",
+      "feature": "import",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:14:34.205Z",
+      "feature": "Phase 2 Gap Analysis — SalesHarnessWorkspace",
+      "phase": "act",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:16:34.564Z",
+      "feature": "dashboard",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:17:47.149Z",
+      "feature": "(dashboard)",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:18:00.726Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:18:09.643Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:18:14.305Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:18:22.543Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:18:38.183Z",
+      "feature": "pipeline",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:18:46.869Z",
+      "feature": "pipeline",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:19:05.354Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:19:13.968Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:19:28.695Z",
+      "feature": "db",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:19:33.463Z",
+      "feature": "db",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:19:50.380Z",
+      "feature": "meetings",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:20:26.257Z",
+      "feature": "meetings",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:20:46.186Z",
+      "feature": "SalesHarnessWorkspace",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:21:29.195Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:24:51.349Z",
+      "feature": "summary",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:25:11.149Z",
+      "feature": "reminders",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:31:36.563Z",
+      "feature": "db",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:31:42.274Z",
+      "feature": "db",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:31:47.639Z",
+      "feature": "db",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:32:08.307Z",
+      "feature": "deals",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:32:21.171Z",
+      "feature": "[id]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:33:31.201Z",
+      "feature": "pipeline",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:33:47.997Z",
+      "feature": "pipeline",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:33:57.817Z",
+      "feature": "pipeline",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:34:30.303Z",
+      "feature": "score",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:34:40.654Z",
+      "feature": "forecast",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:35:00.596Z",
+      "feature": "intelligence",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:36:26.174Z",
+      "feature": "intelligence",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:41:30.047Z",
+      "feature": "db",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:41:36.353Z",
+      "feature": "db",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:41:48.431Z",
+      "feature": "pipeline",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:41:53.518Z",
+      "feature": "pipeline",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:42:03.012Z",
+      "feature": "pipeline",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:42:25.058Z",
+      "feature": "contract-expiry",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:42:38.784Z",
+      "feature": "import",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:42:50.046Z",
+      "feature": "import",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:47:08.709Z",
+      "feature": "db",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:47:18.240Z",
+      "feature": "db",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:47:59.068Z",
+      "feature": "generate",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:48:07.559Z",
+      "feature": "reports",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:48:15.753Z",
+      "feature": "[id]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:48:57.458Z",
+      "feature": "reports",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:49:08.066Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T10:49:13.560Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T12:49:54.154Z",
+      "feature": "reports",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T12:50:01.783Z",
+      "feature": "db",
       "phase": "do",
       "action": "updated"
     }
