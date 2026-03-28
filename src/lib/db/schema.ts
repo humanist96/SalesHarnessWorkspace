@@ -266,3 +266,4 @@ export type NewMeeting = typeof meetings.$inferInsert
 export type Deal = typeof deals.$inferSelect
 export type NewDeal = typeof deals.$inferInsert
 export type Report = typeof reports.$inferSelect
+export type NewReport = typeof reports.$inferInsert

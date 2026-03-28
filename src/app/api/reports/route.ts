@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server'
 import { auth } from '@/lib/auth'
 import { db, reports } from '@/lib/db'
-import { eq, desc } from 'drizzle-orm'
+import { eq, and, desc } from 'drizzle-orm'
 import { createApiResponse, createApiError } from '@/lib/utils/api'
 
 export async function GET(request: NextRequest) {
@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
 
   const result = await db.select()
     .from(reports)
-    .where(filters.length === 1 ? filters[0] : undefined)
+    .where(filters.length === 1 ? filters[0] : and(...filters))
     .orderBy(desc(reports.generatedAt))
     .limit(20)
 
