@@ -14,6 +14,7 @@ import {
   Sparkles,
   ContactRound,
   ClipboardList,
+  FileBarChart,
 } from 'lucide-react'
 import type { Reminder } from '@/lib/db/schema'
 import type { ApiResponse } from '@/types/api'
@@ -27,6 +28,7 @@ const navigation = [
   { name: '미팅', href: '/meetings', icon: Calendar, badgeKey: null },
   { name: '영업 현황', href: '/pipeline', icon: BarChart3, badgeKey: null },
   { name: '인텔리전스', href: '/intelligence', icon: Lightbulb, badgeKey: null },
+  { name: '보고서', href: '/reports', icon: FileBarChart, badgeKey: null },
 ]
 
 export function Sidebar() {

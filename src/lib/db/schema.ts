@@ -224,6 +224,26 @@ export const meetings = pgTable('meetings', {
 })
 
 // ==================
+// Phase 4: Reports
+// ==================
+
+export const reports = pgTable('reports', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').notNull().references(() => users.id),
+
+  type: text('type', { enum: ['weekly', 'monthly'] }).notNull(),
+  title: text('title').notNull(),
+  content: text('content').notNull(),
+  periodStart: date('period_start').notNull(),
+  periodEnd: date('period_end').notNull(),
+
+  stats: jsonb('stats'),
+  aiModel: text('ai_model'),
+  generatedAt: timestamp('generated_at', { withTimezone: true }).notNull().defaultNow(),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+})
+
+// ==================
 // Type exports
 // ==================
 
@@ -245,3 +265,4 @@ export type Meeting = typeof meetings.$inferSelect
 export type NewMeeting = typeof meetings.$inferInsert
 export type Deal = typeof deals.$inferSelect
 export type NewDeal = typeof deals.$inferInsert
+export type Report = typeof reports.$inferSelect
