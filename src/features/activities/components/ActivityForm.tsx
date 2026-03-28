@@ -8,6 +8,8 @@ import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { toast } from 'sonner'
+import { ClassificationBadges } from './ClassificationBadges'
+import { isV2Content } from '@/lib/pipeline/parse-content'
 import type { Organization } from '@/lib/db/schema'
 import type { ApiResponse } from '@/types/api'
 
@@ -144,6 +146,24 @@ export function ActivityForm({ onSuccess }: ActivityFormProps) {
               <span className="text-slate-200">{(classification.organizationMention as string) || '—'}</span>
             </div>
           </div>
+
+          {/* V2 의미 분류 태그 */}
+          {isV2Content(classification) && (
+            <ClassificationBadges
+              parsedContent={classification}
+              showStage
+              showProducts
+              showSentiment
+              showRisks
+            />
+          )}
+
+          {/* AI 분류 이유 */}
+          {(classification.reasoning as string) && (
+            <p className="text-[11px] italic text-slate-500">
+              &ldquo;{classification.reasoning as string}&rdquo;
+            </p>
+          )}
 
           {(classification.summary as string) && (
             <p className="text-[12px] text-slate-400">{classification.summary as string}</p>

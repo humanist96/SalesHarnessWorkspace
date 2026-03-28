@@ -1,10 +1,18 @@
 'use client'
 
+import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { TrendingUp, Building2, Sparkles, BarChart3, AlertTriangle } from 'lucide-react'
+import { TrendingUp, Building2, Sparkles, BarChart3, AlertTriangle, Target, Layers, Package, Activity } from 'lucide-react'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts'
 import { PageHeader } from '@/components/shared/PageHeader'
 import { formatCurrency } from '@/lib/utils/format'
+import { useInsights } from '@/features/insights/hooks/useInsights'
+import { IntentDonut } from '@/features/insights/components/IntentDonut'
+import { SalesFunnel } from '@/features/insights/components/SalesFunnel'
+import { OrgIntentHeatmap } from '@/features/insights/components/OrgIntentHeatmap'
+import { ProductTrend } from '@/features/insights/components/ProductTrend'
+import { RiskAlerts } from '@/features/insights/components/RiskAlerts'
+import { SentimentGauge } from '@/features/insights/components/SentimentGauge'
 import type { ApiResponse } from '@/types/api'
 
 interface IntelligenceData {
@@ -35,7 +43,16 @@ const URGENCY_COLORS: Record<string, string> = {
 
 const CHART_COLORS = ['#f59e0b', '#3b82f6', '#10b981', '#8b5cf6', '#ef4444', '#06b6d4', '#ec4899', '#6b7280']
 
+const PERIOD_OPTIONS = [
+  { value: '30d', label: '30일' },
+  { value: '90d', label: '90일' },
+  { value: '6m', label: '6개월' },
+  { value: '1y', label: '1년' },
+]
+
 export default function IntelligencePage() {
+  const [period, setPeriod] = useState('30d')
+
   const { data: intel, isLoading } = useQuery<IntelligenceData>({
     queryKey: ['intelligence'],
     queryFn: async () => {
@@ -54,9 +71,11 @@ export default function IntelligencePage() {
     },
   })
 
+  const { data: insights } = useInsights(period)
+
   return (
     <div>
-      <PageHeader title="인텔리전스" description="AI 기반 영업 인사이트와 추천을 확인합니다." />
+      <PageHeader title="인텔리전스" description="AI 기반 영업 인사이트와 전략적 분석" />
 
       {isLoading ? (
         <div className="space-y-4">
@@ -85,6 +104,104 @@ export default function IntelligencePage() {
             ) : (
               <p className="text-[13px] text-slate-500">활동 데이터가 쌓이면 AI가 집중 고객을 추천합니다.</p>
             )}
+          </div>
+
+          {/* V2 인사이트 섹션 — 기간 선택 */}
+          <div className="flex items-center gap-2">
+            <span className="text-[12px] text-slate-500">분석 기간:</span>
+            {PERIOD_OPTIONS.map((opt) => (
+              <button
+                key={opt.value}
+                onClick={() => setPeriod(opt.value)}
+                className={`rounded-full px-3 py-1 text-[11px] font-medium transition-all ${
+                  period === opt.value
+                    ? 'bg-amber-500/15 text-amber-400'
+                    : 'bg-white/[0.03] text-slate-500 hover:bg-white/[0.06]'
+                }`}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+
+          {/* 영업 목적 + 감성 */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="glass-card rounded-2xl p-6">
+              <h2 className="mb-4 flex items-center gap-2 text-[15px] font-semibold text-white">
+                <Target className="h-4 w-4 text-amber-400" />
+                영업 목적 분포
+              </h2>
+              {insights ? (
+                <IntentDonut data={insights.intentDistribution} />
+              ) : (
+                <div className="h-[180px] animate-pulse rounded-xl bg-white/[0.04]" />
+              )}
+            </div>
+
+            <div className="glass-card rounded-2xl p-6">
+              <h2 className="mb-4 flex items-center gap-2 text-[15px] font-semibold text-white">
+                <Activity className="h-4 w-4 text-emerald-400" />
+                영업 감성 분포
+              </h2>
+              {insights ? (
+                <SentimentGauge data={insights.sentimentDistribution} />
+              ) : (
+                <div className="h-[140px] animate-pulse rounded-xl bg-white/[0.04]" />
+              )}
+            </div>
+          </div>
+
+          {/* 영업 퍼널 */}
+          <div className="glass-card rounded-2xl p-6">
+            <h2 className="mb-4 flex items-center gap-2 text-[15px] font-semibold text-white">
+              <Layers className="h-4 w-4 text-violet-400" />
+              영업 퍼널 (단계별 활동 분포)
+            </h2>
+            {insights ? (
+              <SalesFunnel data={insights.stageFunnel} />
+            ) : (
+              <div className="h-[200px] animate-pulse rounded-xl bg-white/[0.04]" />
+            )}
+          </div>
+
+          {/* 고객사 × 목적 히트맵 */}
+          <div className="glass-card rounded-2xl p-6">
+            <h2 className="mb-4 flex items-center gap-2 text-[15px] font-semibold text-white">
+              <Building2 className="h-4 w-4 text-violet-400" />
+              고객사 x 영업목적 히트맵
+            </h2>
+            {insights ? (
+              <OrgIntentHeatmap data={insights.orgIntentMatrix} />
+            ) : (
+              <div className="h-[200px] animate-pulse rounded-xl bg-white/[0.04]" />
+            )}
+          </div>
+
+          {/* 상품별 트렌드 + 리스크 */}
+          <div className="grid grid-cols-3 gap-4">
+            <div className="col-span-2 glass-card rounded-2xl p-6">
+              <h2 className="mb-4 flex items-center gap-2 text-[15px] font-semibold text-white">
+                <Package className="h-4 w-4 text-blue-400" />
+                상품별 활동 트렌드
+              </h2>
+              {insights ? (
+                <ProductTrend data={insights.productTrend} />
+              ) : (
+                <div className="h-[220px] animate-pulse rounded-xl bg-white/[0.04]" />
+              )}
+            </div>
+
+            <div className="glass-card rounded-2xl p-6">
+              <h2 className="mb-4 flex items-center gap-2 text-[15px] font-semibold text-white">
+                <AlertTriangle className="h-4 w-4 text-rose-400" />
+                리스크 신호
+              </h2>
+              {insights ? (
+                <RiskAlerts data={insights.riskSummary} />
+              ) : (
+                <div className="h-[220px] animate-pulse rounded-xl bg-white/[0.04]" />
+              )}
+            </div>
           </div>
 
           {/* Forecast */}
@@ -117,12 +234,12 @@ export default function IntelligencePage() {
             </div>
           )}
 
+          {/* 기존 차트 (유형별/월별/고객사별) */}
           <div className="grid grid-cols-2 gap-4">
-            {/* Activity Type Stats */}
             <div className="glass-card rounded-2xl p-6">
               <h2 className="mb-4 flex items-center gap-2 text-[15px] font-semibold text-white">
                 <BarChart3 className="h-4 w-4 text-blue-400" />
-                활동 유형별 현황 (30일)
+                활동 수단별 현황 (30일)
               </h2>
               {intel?.activityTypeCounts && intel.activityTypeCounts.length > 0 ? (
                 <ResponsiveContainer width="100%" height={200}>
@@ -145,7 +262,6 @@ export default function IntelligencePage() {
               )}
             </div>
 
-            {/* Monthly Trend */}
             <div className="glass-card rounded-2xl p-6">
               <h2 className="mb-4 flex items-center gap-2 text-[15px] font-semibold text-white">
                 <TrendingUp className="h-4 w-4 text-emerald-400" />

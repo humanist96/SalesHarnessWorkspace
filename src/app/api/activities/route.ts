@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server'
 import { auth } from '@/lib/auth'
 import { db, activities } from '@/lib/db'
-import { eq, desc, and } from 'drizzle-orm'
+import { eq, desc, and, ilike, sql } from 'drizzle-orm'
 import { createApiResponse, createApiError } from '@/lib/utils/api'
 import { executeActivityPipeline } from '@/lib/pipeline/orchestrator'
 
@@ -11,12 +11,37 @@ export async function GET(request: NextRequest) {
 
   const orgId = request.nextUrl.searchParams.get('organizationId')
   const type = request.nextUrl.searchParams.get('type')
+  const intent = request.nextUrl.searchParams.get('intent')
+  const stage = request.nextUrl.searchParams.get('stage')
+  const product = request.nextUrl.searchParams.get('product')
+  const search = request.nextUrl.searchParams.get('search')
   const limit = parseInt(request.nextUrl.searchParams.get('limit') || '50')
 
-  const filters = [eq(activities.userId, session.user.id)]
+  const filters: ReturnType<typeof eq>[] = [eq(activities.userId, session.user.id)]
   if (orgId) filters.push(eq(activities.organizationId, orgId))
   if (type) filters.push(eq(activities.type, type as typeof activities.type.enumValues[number]))
-  const conditions = filters.length === 1 ? filters[0] : and(...filters)
+
+  // V2 JSONB 필터
+  const jsonFilters: ReturnType<typeof sql>[] = []
+  if (intent) {
+    const intents = intent.split(',')
+    jsonFilters.push(sql`${activities.parsedContent}->>'intent' = ANY(ARRAY[${sql.join(intents.map(i => sql`${i}`), sql`, `)}])`)
+  }
+  if (stage) {
+    jsonFilters.push(sql`${activities.parsedContent}->>'stage' = ${stage}`)
+  }
+  if (product) {
+    jsonFilters.push(sql`${activities.parsedContent}->'products' ? ${product}`)
+  }
+  if (search) {
+    filters.push(ilike(activities.rawContent, `%${search}%`))
+  }
+
+  const allConditions = [
+    ...filters,
+    ...jsonFilters,
+  ]
+  const conditions = allConditions.length === 1 ? allConditions[0] : and(...allConditions)
 
   const result = await db.select()
     .from(activities)

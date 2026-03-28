@@ -1,8 +1,9 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-03-28T12:50:01.783Z",
+  "lastUpdated": "2026-03-28T16:00:00.000Z",
   "activeFeatures": [
     "SalesHarnessWorkspace",
+    "activity-insights-v2",
     "(dashboard)",
     "layout",
     "openai",
@@ -36,7 +37,11 @@
     "score",
     "forecast",
     "contract-expiry",
-    "reports"
+    "reports",
+    "scripts",
+    "classify",
+    "reclassify",
+    "insights"
   ],
   "primaryFeature": "SalesHarnessWorkspace",
   "features": {
@@ -47,6 +52,14 @@
       "startedAt": "2026-03-28T01:47:20.163Z",
       "archivedAt": "2026-03-28T14:00:00.000Z",
       "archivedTo": "docs/archive/2026-03/SalesHarnessWorkspace/"
+    },
+    "activity-insights-v2": {
+      "phase": "archived",
+      "matchRate": 96,
+      "iterationCount": 1,
+      "startedAt": "2026-03-28T15:00:00.000Z",
+      "archivedAt": "2026-03-28T16:00:00.000Z",
+      "archivedTo": "docs/archive/2026-03/activity-insights-v2/"
     },
     "(dashboard)": {
       "phase": "do",
@@ -252,9 +265,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T02:35:55.408Z",
-        "lastUpdated": "2026-03-28T10:42:03.012Z"
+        "lastUpdated": "2026-03-28T13:56:09.369Z"
       },
-      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/(dashboard)/pipeline/page.tsx"
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/lib/pipeline/classify.ts"
     },
     "intelligence": {
       "phase": "do",
@@ -265,7 +278,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T02:35:57.773Z",
-        "lastUpdated": "2026-03-28T10:36:26.174Z"
+        "lastUpdated": "2026-03-28T13:59:35.162Z"
       },
       "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/(dashboard)/intelligence/page.tsx"
     },
@@ -356,9 +369,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T09:56:05.363Z",
-        "lastUpdated": "2026-03-28T10:21:29.195Z"
+        "lastUpdated": "2026-03-28T14:07:13.593Z"
       },
-      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/activities/route.ts"
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/(dashboard)/activities/page.tsx"
     },
     "reminders": {
       "phase": "do",
@@ -490,6 +503,58 @@
         "lastUpdated": "2026-03-28T12:49:54.154Z"
       },
       "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/reports/route.ts"
+    },
+    "scripts": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T13:07:14.224Z",
+        "lastUpdated": "2026-03-28T13:13:26.274Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/scripts/import-csv.ts"
+    },
+    "classify": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T13:56:29.266Z",
+        "lastUpdated": "2026-03-28T13:56:29.266Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/activities/[id]/classify/route.ts"
+    },
+    "reclassify": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T13:56:41.705Z",
+        "lastUpdated": "2026-03-28T13:56:41.705Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/activities/reclassify/route.ts"
+    },
+    "insights": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-28T13:57:23.854Z",
+        "lastUpdated": "2026-03-28T14:00:52.584Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/features/insights/components/IntentDonut.tsx"
     }
   },
   "pipeline": {
@@ -500,7 +565,7 @@
   "session": {
     "startedAt": "2026-03-28T00:23:14.845Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-03-28T12:50:01.783Z"
+    "lastActivity": "2026-03-28T14:07:13.593Z"
   },
   "history": [
     {
@@ -1604,6 +1669,240 @@
     {
       "timestamp": "2026-03-28T12:50:01.783Z",
       "feature": "db",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:07:14.224Z",
+      "feature": "scripts",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:07:54.072Z",
+      "feature": "scripts",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:08:01.953Z",
+      "feature": "scripts",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:13:26.274Z",
+      "feature": "scripts",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:53:35.002Z",
+      "feature": "pipeline",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:53:44.282Z",
+      "feature": "pipeline",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:54:04.435Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:54:33.885Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:54:50.571Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:55:20.033Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:56:09.369Z",
+      "feature": "pipeline",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:56:29.266Z",
+      "feature": "classify",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:56:41.705Z",
+      "feature": "reclassify",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:56:51.828Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:57:23.854Z",
+      "feature": "insights",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:57:37.636Z",
+      "feature": "insights",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:57:47.642Z",
+      "feature": "insights",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:57:58.242Z",
+      "feature": "insights",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:58:11.098Z",
+      "feature": "insights",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:58:22.247Z",
+      "feature": "insights",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:58:27.102Z",
+      "feature": "insights",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:58:33.002Z",
+      "feature": "insights",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:59:35.162Z",
+      "feature": "intelligence",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:59:48.463Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T13:59:58.474Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T14:00:32.379Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T14:00:52.584Z",
+      "feature": "insights",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T14:05:11.161Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T14:05:31.912Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T14:05:52.814Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T14:06:07.690Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T14:06:20.446Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T14:06:29.159Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T14:06:36.630Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T14:06:44.720Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T14:06:49.777Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T14:06:57.068Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T14:07:07.469Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T14:07:13.593Z",
+      "feature": "activities",
       "phase": "do",
       "action": "updated"
     }

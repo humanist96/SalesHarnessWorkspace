@@ -2,26 +2,17 @@
 
 import { useState } from 'react'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { ClipboardList, Phone, Mail, MapPin, Handshake, FileCheck, Sparkles } from 'lucide-react'
+import { ClipboardList, Sparkles, Search } from 'lucide-react'
 import { PageHeader } from '@/components/shared/PageHeader'
 import { EmptyState } from '@/components/shared/EmptyState'
 import { ActivityForm } from '@/features/activities/components/ActivityForm'
-import { Badge } from '@/components/ui/badge'
-import { formatRelativeTime } from '@/lib/utils/format'
+import { ActivityCard } from '@/features/activities/components/ActivityCard'
+import { ActivityDetailSheet } from '@/features/activities/components/ActivityDetailSheet'
+import { INTENT_CONFIG, STAGE_CONFIG, ALL_INTENTS, ALL_STAGES } from '@/lib/pipeline/types'
 import type { Activity } from '@/lib/db/schema'
 import type { ApiResponse } from '@/types/api'
 
-const TYPE_CONFIG: Record<string, { label: string; icon: typeof Phone; color: string }> = {
-  call: { label: '전화', icon: Phone, color: 'bg-blue-500/10 text-blue-400 border-blue-500/20' },
-  email: { label: '이메일', icon: Mail, color: 'bg-violet-500/10 text-violet-400 border-violet-500/20' },
-  visit: { label: '방문', icon: MapPin, color: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' },
-  meeting: { label: '미팅', icon: Handshake, color: 'bg-amber-500/10 text-amber-400 border-amber-500/20' },
-  contract: { label: '계약', icon: FileCheck, color: 'bg-rose-500/10 text-rose-400 border-rose-500/20' },
-  billing: { label: '빌링', icon: ClipboardList, color: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20' },
-  other: { label: '기타', icon: ClipboardList, color: 'bg-slate-500/10 text-slate-400 border-slate-500/20' },
-}
-
-const ACTIVITY_TYPES = [
+const METHOD_TYPES = [
   { value: '', label: '전체' },
   { value: 'call', label: '전화' },
   { value: 'email', label: '이메일' },
@@ -35,12 +26,20 @@ const ACTIVITY_TYPES = [
 export default function ActivitiesPage() {
   const queryClient = useQueryClient()
   const [typeFilter, setTypeFilter] = useState('')
+  const [intentFilter, setIntentFilter] = useState('')
+  const [stageFilter, setStageFilter] = useState('')
+  const [searchQuery, setSearchQuery] = useState('')
+  const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null)
+  const [sheetOpen, setSheetOpen] = useState(false)
 
   const { data: activityList, isLoading } = useQuery<Activity[]>({
-    queryKey: ['activities', typeFilter],
+    queryKey: ['activities', typeFilter, intentFilter, stageFilter, searchQuery],
     queryFn: async () => {
       const params = new URLSearchParams({ limit: '100' })
       if (typeFilter) params.set('type', typeFilter)
+      if (intentFilter) params.set('intent', intentFilter)
+      if (stageFilter) params.set('stage', stageFilter)
+      if (searchQuery) params.set('search', searchQuery)
       const res = await fetch(`/api/activities?${params}`)
       const json: ApiResponse<Activity[]> = await res.json()
       return json.data ?? []
@@ -52,9 +51,14 @@ export default function ActivitiesPage() {
     queryClient.invalidateQueries({ queryKey: ['reminders'] })
   }
 
+  function handleCardClick(activity: Activity) {
+    setSelectedActivity(activity)
+    setSheetOpen(true)
+  }
+
   return (
     <div>
-      <PageHeader title="영업 활동" description="활동을 기록하면 AI가 자동으로 분류하고 후속조치를 추출합니다." />
+      <PageHeader title="영업 활동" description="활동을 기록하면 AI가 자동으로 분류하고 인사이트를 도출합니다." />
 
       <div className="grid grid-cols-5 gap-6">
         {/* 왼쪽: 활동 기록 폼 */}
@@ -71,12 +75,18 @@ export default function ActivitiesPage() {
         {/* 오른쪽: 활동 목록 */}
         <div className="col-span-3">
           <div className="glass-card rounded-2xl p-6">
-            <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-[15px] font-semibold text-white">
-                최근 활동 ({activityList?.length || 0}건)
-              </h2>
-              <div className="flex gap-1">
-                {ACTIVITY_TYPES.map((t) => (
+            {/* 필터 영역 */}
+            <div className="mb-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <h2 className="text-[15px] font-semibold text-white">
+                  최근 활동 ({activityList?.length || 0}건)
+                </h2>
+              </div>
+
+              {/* 수단 필터 */}
+              <div className="flex items-center gap-1">
+                <span className="mr-1 text-[10px] text-slate-600">수단:</span>
+                {METHOD_TYPES.map((t) => (
                   <button
                     key={t.value}
                     onClick={() => setTypeFilter(t.value)}
@@ -90,8 +100,83 @@ export default function ActivitiesPage() {
                   </button>
                 ))}
               </div>
+
+              {/* 영업 목적 필터 */}
+              <div className="flex flex-wrap items-center gap-1">
+                <span className="mr-1 text-[10px] text-slate-600">목적:</span>
+                <button
+                  onClick={() => setIntentFilter('')}
+                  className={`rounded-full px-2.5 py-1 text-[10px] font-medium transition-all ${
+                    intentFilter === ''
+                      ? 'bg-amber-500/15 text-amber-400'
+                      : 'bg-white/[0.03] text-slate-500 hover:bg-white/[0.06] hover:text-slate-300'
+                  }`}
+                >
+                  전체
+                </button>
+                {ALL_INTENTS.map((intent) => {
+                  const cfg = INTENT_CONFIG[intent]
+                  return (
+                    <button
+                      key={intent}
+                      onClick={() => setIntentFilter(intent)}
+                      className={`rounded-full px-2.5 py-1 text-[10px] font-medium transition-all ${
+                        intentFilter === intent
+                          ? `${cfg.color}`
+                          : 'bg-white/[0.03] text-slate-500 hover:bg-white/[0.06] hover:text-slate-300'
+                      }`}
+                    >
+                      {cfg.label}
+                    </button>
+                  )
+                })}
+              </div>
+
+              {/* 영업 단계 필터 */}
+              <div className="flex flex-wrap items-center gap-1">
+                <span className="mr-1 text-[10px] text-slate-600">단계:</span>
+                <button
+                  onClick={() => setStageFilter('')}
+                  className={`rounded-full px-2.5 py-1 text-[10px] font-medium transition-all ${
+                    stageFilter === ''
+                      ? 'bg-amber-500/15 text-amber-400'
+                      : 'bg-white/[0.03] text-slate-500 hover:bg-white/[0.06] hover:text-slate-300'
+                  }`}
+                >
+                  전체
+                </button>
+                {ALL_STAGES.map((stage) => {
+                  const cfg = STAGE_CONFIG[stage]
+                  return (
+                    <button
+                      key={stage}
+                      onClick={() => setStageFilter(stage)}
+                      className={`rounded-full px-2.5 py-1 text-[10px] font-medium transition-all ${
+                        stageFilter === stage
+                          ? 'bg-violet-500/15 text-violet-400'
+                          : 'bg-white/[0.03] text-slate-500 hover:bg-white/[0.06] hover:text-slate-300'
+                      }`}
+                    >
+                      {cfg.label}
+                    </button>
+                  )
+                })}
+              </div>
+
+              {/* 검색 */}
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-600" />
+                <input
+                  type="text"
+                  placeholder="활동 내용 검색..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="h-9 w-full rounded-lg border border-white/[0.06] bg-white/[0.03] pl-9 pr-3 text-[12px] text-slate-300 placeholder-slate-600 outline-none focus:border-amber-500/30"
+                />
+              </div>
             </div>
 
+            {/* 활동 목록 */}
             {isLoading ? (
               <div className="space-y-3">
                 {[1, 2, 3].map((i) => (
@@ -106,49 +191,26 @@ export default function ActivitiesPage() {
               />
             ) : (
               <div className="space-y-2 max-h-[600px] overflow-y-auto">
-                {activityList.map((activity) => {
-                  const config = TYPE_CONFIG[activity.type || 'other'] || TYPE_CONFIG.other
-                  const Icon = config.icon
-                  const parsed = activity.parsedContent as Record<string, unknown> | null
-
-                  return (
-                    <div key={activity.id} className="rounded-xl border border-white/[0.03] bg-white/[0.02] p-4 transition-all duration-200 hover:border-white/[0.08] hover:bg-white/[0.04]">
-                      <div className="flex items-start gap-3">
-                        <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/[0.04]">
-                          <Icon className="h-4 w-4 text-slate-400" strokeWidth={1.8} />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2 mb-1">
-                            <Badge variant="outline" className={`text-[10px] ${config.color}`}>
-                              {config.label}
-                            </Badge>
-                            {activity.aiClassified && (
-                              <span className="text-[9px] text-amber-500/60">AI 분류</span>
-                            )}
-                            <span className="ml-auto text-[11px] text-slate-600">
-                              {formatRelativeTime(activity.activityDate)}
-                            </span>
-                          </div>
-                          <p className="text-[13px] text-slate-300 line-clamp-2">
-                            {(parsed?.summary as string) || activity.rawContent.slice(0, 150)}
-                          </p>
-                          {parsed && Array.isArray(parsed.keywords) && (parsed.keywords as string[]).length > 0 && (
-                            <div className="mt-1.5 flex flex-wrap gap-1">
-                              {(parsed.keywords as string[]).slice(0, 4).map((kw, i) => (
-                                <span key={i} className="rounded bg-white/[0.04] px-1.5 py-0.5 text-[9px] text-slate-500">{kw}</span>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  )
-                })}
+                {activityList.map((activity) => (
+                  <ActivityCard
+                    key={activity.id}
+                    activity={activity}
+                    onClick={() => handleCardClick(activity)}
+                  />
+                ))}
               </div>
             )}
           </div>
         </div>
       </div>
+
+      {/* 활동 상세 Sheet */}
+      <ActivityDetailSheet
+        activity={selectedActivity}
+        open={sheetOpen}
+        onOpenChange={setSheetOpen}
+        onUpdated={handleSuccess}
+      />
     </div>
   )
 }
