@@ -1,0 +1,39 @@
+UV (Universal Versioning) Reference for SalesHarness
+=====================================================
+
+SalesHarness 프로젝트의 버전 관리 및 패키지 매니저 참고 사항.
+
+## Package Manager
+- pnpm (권장) 또는 npm
+- lockfile 커밋 필수 (pnpm-lock.yaml)
+
+## Node.js Version
+- Node.js 20 LTS (최소)
+- .nvmrc 또는 package.json engines 필드로 명시
+
+## Key Dependencies (Phase 0)
+- next: 15.x (App Router)
+- react: 19.x
+- typescript: 5.x
+- tailwindcss: 4.x
+- @supabase/supabase-js: latest
+- openai: latest
+- zod: latest
+- zustand: latest
+- @tanstack/react-query: latest
+
+## UI Dependencies
+- shadcn/ui: CLI로 개별 컴포넌트 설치
+- recharts: 차트
+- sonner: 토스트 알림
+- lucide-react: 아이콘
+
+## Dev Dependencies
+- eslint + eslint-config-next
+- prettier + prettier-plugin-tailwindcss
+- @types/node, @types/react
+
+## Version Pinning
+- Major 버전은 pin (breaking changes 방지)
+- Minor/Patch는 caret (^) 허용
+- 주기적 업데이트: Phase 전환 시

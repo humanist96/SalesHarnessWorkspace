@@ -1,0 +1,63 @@
+SalesHarness Design System Reference for LLMs
+================================================
+
+이 파일은 AI가 UI 코드를 생성할 때 참고하는 디자인 시스템 레퍼런스입니다.
+
+## UI Framework
+- shadcn/ui (https://ui.shadcn.com)
+- Tailwind CSS v4+
+- Radix UI primitives
+
+## Color System
+Primary: blue-800 (#1E40AF) — 주요 액션, 링크
+Secondary: emerald-600 (#059669) — 성공, 긍정적 지표
+Warning: amber-600 (#D97706) — 주의
+Danger: red-600 (#DC2626) — 에러, 위험
+Neutral: gray-700 (#374151) — 기본 텍스트
+Background: gray-50 (#F9FAFB) — 메인 배경
+Surface: white (#FFFFFF) — 카드, 모달
+Sidebar: gray-900 (#111827) — 사이드바 (다크)
+
+## Typography
+H1: text-2xl font-bold (24px)
+H2: text-xl font-semibold (20px)
+H3: text-lg font-medium (18px)
+Body: text-sm (14px) — 대시보드 기본 크기
+Small: text-xs text-gray-500 (12px)
+
+## Spacing
+Card gap: gap-4 (16px)
+Card padding: p-6 (24px)
+Section gap: space-y-6 (24px)
+Input gap: space-y-4 (16px)
+
+## Component Usage
+- Button: Primary(blue), Secondary(outline), Destructive(red), Ghost
+- Card: 정보 그룹핑의 기본 단위
+- Table: shadcn DataTable (정렬, 필터, 페이지네이션)
+- Dialog: 확인/입력 모달
+- Select: 드롭다운 (고객사 선택, 상품 선택 등)
+- Badge: 상태 표시 (딜 단계, 문서 유형 등)
+- Tabs: 탭 네비게이션 (고객사 상세 내 탭)
+- Chart: Recharts (파이프라인, 매출 시각화)
+- Toast: Sonner (성공/에러 알림)
+- Skeleton: 데이터 로딩 시
+
+## Dashboard Layout
+- Sidebar (240px, dark) + Main content
+- Sidebar: 접이식 (tablet에서 축소)
+- Header: 고정, 검색 + 알림 + 프로필
+- Content: max-w-7xl mx-auto, p-6
+
+## Korean UI Labels (중요)
+Dashboard → 홈 또는 대시보드
+Submit → 저장 / 생성
+Cancel → 취소
+Delete → 삭제
+Edit → 수정
+Search → 검색
+Filter → 필터
+Settings → 설정
+Loading → 불러오는 중...
+Error → 문제가 발생했습니다
+Empty → [행동 유도 메시지 포함]

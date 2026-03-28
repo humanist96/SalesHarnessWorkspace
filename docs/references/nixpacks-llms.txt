@@ -1,0 +1,23 @@
+Nixpacks Reference for SalesHarness
+=====================================
+
+Vercel 배포 시 Nixpacks 관련 참고 사항.
+SalesHarness는 Vercel에 배포하므로 Nixpacks를 직접 사용하지 않지만,
+Railway 등 대안 플랫폼으로 전환 시 참고.
+
+## Vercel 배포 (기본)
+- Next.js 자동 감지
+- Build: next build
+- Output: .next/
+- 환경변수: Vercel Dashboard에서 관리
+
+## 대안 플랫폼 (Railway, Render 등) 배포 시
+- Nixpacks가 Next.js를 자동 감지
+- package.json의 build script 실행
+- Node.js 버전: engines.node 필드 참조
+
+## 필수 환경변수
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+OPENAI_API_KEY=
