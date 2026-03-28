@@ -11,11 +11,13 @@ import {
   Lightbulb,
   Settings,
   Sparkles,
+  ContactRound,
 } from 'lucide-react'
 
 const navigation = [
   { name: '홈', href: '/', icon: Home },
   { name: '고객사', href: '/organizations', icon: Building2 },
+  { name: '담당자 찾기', href: '/contacts', icon: ContactRound },
   { name: '문서', href: '/documents', icon: FileText },
   { name: '미팅', href: '/meetings', icon: Calendar },
   { name: '영업 현황', href: '/pipeline', icon: BarChart3 },

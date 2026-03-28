@@ -1,0 +1,2362 @@
+[
+  {
+    "team": "PB계좌업무팀",
+    "majorCategory": "업무총괄",
+    "minorCategory": "",
+    "pm": {
+      "title": "팀장",
+      "name": "조승욱",
+      "phone": "7554"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB계좌업무팀",
+    "majorCategory": "계좌",
+    "minorCategory": "계좌관리",
+    "pm": {
+      "title": "차장",
+      "name": "이효천",
+      "phone": "7971"
+    },
+    "sub1": {
+      "title": "대리",
+      "name": "이준형",
+      "phone": "8086"
+    },
+    "sub2": {
+      "title": "대리",
+      "name": "박성은",
+      "phone": "8082"
+    }
+  },
+  {
+    "team": "PB계좌업무팀",
+    "majorCategory": "계좌",
+    "minorCategory": "고객관리",
+    "pm": {
+      "title": "차장",
+      "name": "이효천",
+      "phone": "7971"
+    },
+    "sub1": {
+      "title": "대리",
+      "name": "이준형",
+      "phone": "8086"
+    },
+    "sub2": {
+      "title": "대리",
+      "name": "박성은",
+      "phone": "8082"
+    }
+  },
+  {
+    "team": "PB계좌업무팀",
+    "majorCategory": "계좌",
+    "minorCategory": "부가서비스관리",
+    "pm": {
+      "title": "차장",
+      "name": "이효천",
+      "phone": "7971"
+    },
+    "sub1": {
+      "title": "대리",
+      "name": "이준형",
+      "phone": "8086"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB계좌업무팀",
+    "majorCategory": "출납",
+    "minorCategory": "현금출납",
+    "pm": {
+      "title": "사원",
+      "name": "유승현",
+      "phone": "8089"
+    },
+    "sub1": {
+      "title": "차석",
+      "name": "이강빈",
+      "phone": "7553"
+    },
+    "sub2": {
+      "title": "사원",
+      "name": "정창우",
+      "phone": "7563"
+    }
+  },
+  {
+    "team": "PB계좌업무팀",
+    "majorCategory": "출납",
+    "minorCategory": "유가출납",
+    "pm": {
+      "title": "차석",
+      "name": "이강빈",
+      "phone": "7553"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "유승현",
+      "phone": "8089"
+    },
+    "sub2": {
+      "title": "사원",
+      "name": "정창우",
+      "phone": "7563"
+    }
+  },
+  {
+    "team": "PB계좌업무팀",
+    "majorCategory": "은행연계",
+    "minorCategory": "은행예수금",
+    "pm": {
+      "title": "사원",
+      "name": "윤성필",
+      "phone": "8088"
+    },
+    "sub1": {
+      "title": "차장",
+      "name": "임낙천",
+      "phone": "7562"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB계좌업무팀",
+    "majorCategory": "은행연계",
+    "minorCategory": "은행이체",
+    "pm": {
+      "title": "차장",
+      "name": "임낙천",
+      "phone": "7562"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "윤성필",
+      "phone": "8088"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB계좌업무팀",
+    "majorCategory": "은행연계",
+    "minorCategory": "소액지급결제(타행환/전자금융)",
+    "pm": {
+      "title": "차장",
+      "name": "임낙천",
+      "phone": "7562"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "윤성필",
+      "phone": "8088"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB계좌업무팀",
+    "majorCategory": "은행연계",
+    "minorCategory": "소액지급결제(CMS)",
+    "pm": {
+      "title": "차장",
+      "name": "임낙천",
+      "phone": "7562"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "윤성필",
+      "phone": "8088"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB계좌업무팀",
+    "majorCategory": "권리/공모/유가",
+    "minorCategory": "권리",
+    "pm": {
+      "title": "과장",
+      "name": "홍진민",
+      "phone": "8093"
+    },
+    "sub1": {
+      "title": "과장",
+      "name": "김종대",
+      "phone": "8077"
+    },
+    "sub2": {
+      "title": "대리",
+      "name": "정다미",
+      "phone": "8087"
+    }
+  },
+  {
+    "team": "PB계좌업무팀",
+    "majorCategory": "권리/공모/유가",
+    "minorCategory": "공모",
+    "pm": {
+      "title": "대리",
+      "name": "정다미",
+      "phone": "8087"
+    },
+    "sub1": {
+      "title": "과장",
+      "name": "김종대",
+      "phone": "8077"
+    },
+    "sub2": {
+      "title": "차장",
+      "name": "홍진민",
+      "phone": "8093"
+    }
+  },
+  {
+    "team": "PB계좌업무팀",
+    "majorCategory": "권리/공모/유가",
+    "minorCategory": "유가",
+    "pm": {
+      "title": "과장",
+      "name": "김종대",
+      "phone": "8077"
+    },
+    "sub1": {
+      "title": "대리",
+      "name": "정다미",
+      "phone": "8087"
+    },
+    "sub2": {
+      "title": "차장",
+      "name": "홍진민",
+      "phone": "8093"
+    }
+  },
+  {
+    "team": "PB계좌업무팀",
+    "majorCategory": "권리/공모/유가",
+    "minorCategory": "신용/대출",
+    "pm": {
+      "title": "차장",
+      "name": "김상교",
+      "phone": "8320"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "김대영",
+      "phone": "8084"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB계좌업무팀",
+    "majorCategory": "권리/공모/유가",
+    "minorCategory": "증권금융융자",
+    "pm": {
+      "title": "차장",
+      "name": "김상교",
+      "phone": "8320"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "김대영",
+      "phone": "8084"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB금융상품팀",
+    "majorCategory": "업무총괄",
+    "minorCategory": "",
+    "pm": {
+      "title": "팀장",
+      "name": "박효일",
+      "phone": "8361"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB금융상품팀",
+    "majorCategory": "수익증권/\n장외채권",
+    "minorCategory": "수익증권",
+    "pm": {
+      "title": "사원",
+      "name": "선한이",
+      "phone": "7852"
+    },
+    "sub1": {
+      "title": "차장",
+      "name": "이윤선",
+      "phone": "7816"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB금융상품팀",
+    "majorCategory": "수익증권/\n장외채권",
+    "minorCategory": "신탁자산수탁",
+    "pm": {
+      "title": "차장",
+      "name": "이윤선",
+      "phone": "7816"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "선한이",
+      "phone": "7852"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB금융상품팀",
+    "majorCategory": "수익증권/\n장외채권",
+    "minorCategory": "WRAP ACCOUNT",
+    "pm": {
+      "title": "차장",
+      "name": "이윤선",
+      "phone": "7816"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "선한이",
+      "phone": "7852"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB금융상품팀",
+    "majorCategory": "수익증권/\n장외채권",
+    "minorCategory": "장외채권",
+    "pm": {
+      "title": "과장",
+      "name": "전하리",
+      "phone": "8316"
+    },
+    "sub1": {
+      "title": "대리",
+      "name": "유동화",
+      "phone": "8085"
+    },
+    "sub2": {
+      "title": "사원",
+      "name": "박상준",
+      "phone": "8377"
+    }
+  },
+  {
+    "team": "PB금융상품팀",
+    "majorCategory": "상품주식/\n상품채권/\n해외증권",
+    "minorCategory": "상품주식/중개대차",
+    "pm": {
+      "title": "차장",
+      "name": "홍락기",
+      "phone": "8380"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "백민주",
+      "phone": "7842"
+    },
+    "sub2": {
+      "title": "사원",
+      "name": "강현서",
+      "phone": "8386"
+    }
+  },
+  {
+    "team": "PB금융상품팀",
+    "majorCategory": "상품주식/\n상품채권/\n해외증권",
+    "minorCategory": "상품채권/중개대차",
+    "pm": {
+      "title": "과장",
+      "name": "전하리",
+      "phone": "8316"
+    },
+    "sub1": {
+      "title": "대리",
+      "name": "유동화",
+      "phone": "8085"
+    },
+    "sub2": {
+      "title": "사원",
+      "name": "박상준",
+      "phone": "8377"
+    }
+  },
+  {
+    "team": "PB금융상품팀",
+    "majorCategory": "상품주식/\n상품채권/\n해외증권",
+    "minorCategory": "상품선물",
+    "pm": {
+      "title": "과장",
+      "name": "전하리",
+      "phone": "8316"
+    },
+    "sub1": {
+      "title": "대리",
+      "name": "유동화",
+      "phone": "8085"
+    },
+    "sub2": {
+      "title": "사원",
+      "name": "박상준",
+      "phone": "8377"
+    }
+  },
+  {
+    "team": "PB금융상품팀",
+    "majorCategory": "상품주식/\n상품채권/\n해외증권",
+    "minorCategory": "원장관리(채권원리금)",
+    "pm": {
+      "title": "과장",
+      "name": "전하리",
+      "phone": "8316"
+    },
+    "sub1": {
+      "title": "대리",
+      "name": "유동화",
+      "phone": "8085"
+    },
+    "sub2": {
+      "title": "사원",
+      "name": "박상준",
+      "phone": "8377"
+    }
+  },
+  {
+    "team": "PB금융상품팀",
+    "majorCategory": "상품주식/\n상품채권/\n해외증권",
+    "minorCategory": "CD/CP(전자단기사채)",
+    "pm": {
+      "title": "사원",
+      "name": "고희조",
+      "phone": "8366"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB금융상품팀",
+    "majorCategory": "상품주식/\n상품채권/\n해외증권",
+    "minorCategory": "환매채(RP), CMA",
+    "pm": {
+      "title": "사원",
+      "name": "고희조",
+      "phone": "8366"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB금융상품팀",
+    "majorCategory": "상품주식/\n상품채권/\n해외증권",
+    "minorCategory": "해외증권/자기외화채권",
+    "pm": {
+      "title": "차장",
+      "name": "홍락기",
+      "phone": "8380"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "백민주",
+      "phone": "7842"
+    },
+    "sub2": {
+      "title": "사원",
+      "name": "강현서",
+      "phone": "8386"
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "업무총괄",
+    "minorCategory": "",
+    "pm": {
+      "title": "팀장",
+      "name": "최정민",
+      "phone": "8360"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "증권사 통합콜센터",
+    "minorCategory": "지급정지업무",
+    "pm": {
+      "title": "팀장",
+      "name": "최정민",
+      "phone": "8360"
+    },
+    "sub1": {
+      "title": "차석",
+      "name": "이강빈",
+      "phone": "7553"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "BCM",
+    "minorCategory": "비즈니스 모듈관리",
+    "pm": {
+      "title": "차장",
+      "name": "이석주",
+      "phone": "7607"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "BCM",
+    "minorCategory": "사고/차등서비스 관리",
+    "pm": {
+      "title": "차장",
+      "name": "이석주",
+      "phone": "7607"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "공통",
+    "minorCategory": "종목정보관리",
+    "pm": {
+      "title": "차장",
+      "name": "문선기",
+      "phone": "8761"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "장시우",
+      "phone": "8351"
+    },
+    "sub2": {
+      "title": "차장",
+      "name": "노은직",
+      "phone": "8313"
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "공통",
+    "minorCategory": "공통정보관리",
+    "pm": {
+      "title": "차장",
+      "name": "문선기",
+      "phone": "8761"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "장시우",
+      "phone": "8351"
+    },
+    "sub2": {
+      "title": "차장",
+      "name": "노은직",
+      "phone": "8313"
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "회계",
+    "minorCategory": "재무회계",
+    "pm": {
+      "title": "대리",
+      "name": "장희은",
+      "phone": "8315"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "황인건",
+      "phone": "8318"
+    },
+    "sub2": {
+      "title": "사원",
+      "name": "윤상원",
+      "phone": "8378"
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "회계",
+    "minorCategory": "관리회계",
+    "pm": {
+      "title": "대리",
+      "name": "장희은",
+      "phone": "8315"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "황인건",
+      "phone": "8318"
+    },
+    "sub2": {
+      "title": "사원",
+      "name": "윤상원",
+      "phone": "8378"
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "회계",
+    "minorCategory": "세무회계",
+    "pm": {
+      "title": "대리",
+      "name": "장희은",
+      "phone": "8315"
+    },
+    "sub1": {
+      "title": "차석",
+      "name": "안정환",
+      "phone": "8335"
+    },
+    "sub2": {
+      "title": "사원",
+      "name": "윤상원",
+      "phone": "8378"
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "영업지원",
+    "minorCategory": "사원정보",
+    "pm": {
+      "title": "차장",
+      "name": "노은직",
+      "phone": "8313"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "장시우",
+      "phone": "8351"
+    },
+    "sub2": {
+      "title": "차장",
+      "name": "문선기",
+      "phone": "8761"
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "영업지원",
+    "minorCategory": "예탁자산",
+    "pm": {
+      "title": "차장",
+      "name": "노은직",
+      "phone": "8313"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "장시우",
+      "phone": "8351"
+    },
+    "sub2": {
+      "title": "차장",
+      "name": "문선기",
+      "phone": "8761"
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "영업지원",
+    "minorCategory": "선물집계",
+    "pm": {
+      "title": "차장",
+      "name": "노은직",
+      "phone": "8313"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "장시우",
+      "phone": "8351"
+    },
+    "sub2": {
+      "title": "차장",
+      "name": "문선기",
+      "phone": "8761"
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "영업지원",
+    "minorCategory": "약정/성과관리",
+    "pm": {
+      "title": "차장",
+      "name": "노은직",
+      "phone": "8313"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "장시우",
+      "phone": "8351"
+    },
+    "sub2": {
+      "title": "차장",
+      "name": "문선기",
+      "phone": "8761"
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "영업지원",
+    "minorCategory": "EIS",
+    "pm": {
+      "title": "차장",
+      "name": "노은직",
+      "phone": "8313"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "장시우",
+      "phone": "8351"
+    },
+    "sub2": {
+      "title": "차장",
+      "name": "문선기",
+      "phone": "8761"
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "영업지원",
+    "minorCategory": "CRM",
+    "pm": {
+      "title": "차장",
+      "name": "노은직",
+      "phone": "8313"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "장시우",
+      "phone": "8351"
+    },
+    "sub2": {
+      "title": "차장",
+      "name": "문선기",
+      "phone": "8761"
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "금융투자소득세",
+    "minorCategory": "금융투자소득세",
+    "pm": {
+      "title": "차장",
+      "name": "홍종미",
+      "phone": "8363"
+    },
+    "sub1": {
+      "title": "차석",
+      "name": "최영철",
+      "phone": "8319"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "감사/대외보고",
+    "minorCategory": "감사지원",
+    "pm": {
+      "title": "차장",
+      "name": "조용갑",
+      "phone": "8322"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "감사/대외보고",
+    "minorCategory": "외부기관자료",
+    "pm": {
+      "title": "차장",
+      "name": "조용갑",
+      "phone": "8322"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "Compliance",
+    "minorCategory": "FDS",
+    "pm": {
+      "title": "차석",
+      "name": "정재천",
+      "phone": "7937"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "윤슬기",
+      "phone": "7911"
+    },
+    "sub2": {
+      "title": "차석",
+      "name": "장석한",
+      "phone": "7621"
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "Compliance",
+    "minorCategory": "AML/RBA",
+    "pm": {
+      "title": "사원",
+      "name": "윤슬기",
+      "phone": "7911"
+    },
+    "sub1": {
+      "title": "차석",
+      "name": "정재천",
+      "phone": "7937"
+    },
+    "sub2": {
+      "title": "차석",
+      "name": "장석한",
+      "phone": "7621"
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "Compliance",
+    "minorCategory": "FATCA/CRS",
+    "pm": {
+      "title": "사원",
+      "name": "윤슬기",
+      "phone": "7911"
+    },
+    "sub1": {
+      "title": "차석",
+      "name": "정재천",
+      "phone": "7937"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB경영지원팀",
+    "majorCategory": "정보분석",
+    "minorCategory": "정보분석계",
+    "pm": {
+      "title": "차장",
+      "name": "정재천",
+      "phone": "7937"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "윤슬기",
+      "phone": "7911"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "업무총괄",
+    "minorCategory": "",
+    "pm": {
+      "title": "팀장",
+      "name": "송기영",
+      "phone": "8341"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "현물주문",
+    "minorCategory": "현물주문",
+    "pm": {
+      "title": "대리",
+      "name": "이세연",
+      "phone": "8353"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "김형순",
+      "phone": "8348"
+    },
+    "sub2": {
+      "title": "차석",
+      "name": "이진석",
+      "phone": "8340"
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "현물주문",
+    "minorCategory": "미니원장(현물)",
+    "pm": {
+      "title": "대리",
+      "name": "이세연",
+      "phone": "8353"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "김형순",
+      "phone": "8348"
+    },
+    "sub2": {
+      "title": "차석",
+      "name": "이진석",
+      "phone": "8340"
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "현물주문",
+    "minorCategory": "채권주문",
+    "pm": {
+      "title": "대리",
+      "name": "이세연",
+      "phone": "8353"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "김형순",
+      "phone": "8348"
+    },
+    "sub2": {
+      "title": "차석",
+      "name": "이진석",
+      "phone": "8340"
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "현물주문",
+    "minorCategory": "현물상품주문",
+    "pm": {
+      "title": "대리",
+      "name": "이세연",
+      "phone": "8353"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "김형순",
+      "phone": "8348"
+    },
+    "sub2": {
+      "title": "차석",
+      "name": "이진석",
+      "phone": "8340"
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "현물주문",
+    "minorCategory": "금현물/탄소배출권 주문",
+    "pm": {
+      "title": "대리",
+      "name": "이세연",
+      "phone": "8353"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "김형순",
+      "phone": "8348"
+    },
+    "sub2": {
+      "title": "차석",
+      "name": "이진석",
+      "phone": "8340"
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "현물결제",
+    "minorCategory": "매매정리/결제",
+    "pm": {
+      "title": "과장",
+      "name": "홍승표",
+      "phone": "8355"
+    },
+    "sub1": {
+      "title": "차장",
+      "name": "안석훈",
+      "phone": "8346"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "현물결제",
+    "minorCategory": "반대매매",
+    "pm": {
+      "title": "과장",
+      "name": "홍승표",
+      "phone": "8355"
+    },
+    "sub1": {
+      "title": "차장",
+      "name": "안석훈",
+      "phone": "8346"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "현물결제",
+    "minorCategory": "익일정정",
+    "pm": {
+      "title": "과장",
+      "name": "홍승표",
+      "phone": "8355"
+    },
+    "sub1": {
+      "title": "차장",
+      "name": "안석훈",
+      "phone": "8346"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "현물결제",
+    "minorCategory": "수수료율관리",
+    "pm": {
+      "title": "과장",
+      "name": "홍승표",
+      "phone": "8355"
+    },
+    "sub1": {
+      "title": "차장",
+      "name": "안석훈",
+      "phone": "8346"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "현물결제",
+    "minorCategory": "금현물/탄소배출권 결제",
+    "pm": {
+      "title": "과장",
+      "name": "홍승표",
+      "phone": "8355"
+    },
+    "sub1": {
+      "title": "차장",
+      "name": "안석훈",
+      "phone": "8346"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "현물결제",
+    "minorCategory": "대외자료송신",
+    "pm": {
+      "title": "과장",
+      "name": "홍승표",
+      "phone": "8355"
+    },
+    "sub1": {
+      "title": "차장",
+      "name": "안석훈",
+      "phone": "8346"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "현물결제",
+    "minorCategory": "매매보고서",
+    "pm": {
+      "title": "과장",
+      "name": "홍승표",
+      "phone": "8355"
+    },
+    "sub1": {
+      "title": "차장",
+      "name": "안석훈",
+      "phone": "8346"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "선물주문",
+    "minorCategory": "주문 / 증거금",
+    "pm": {
+      "title": "차장",
+      "name": "박자영",
+      "phone": "8342"
+    },
+    "sub1": {
+      "title": "대리",
+      "name": "박준영",
+      "phone": "8334"
+    },
+    "sub2": {
+      "title": "사원",
+      "name": "구교현",
+      "phone": "8385"
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "선물주문",
+    "minorCategory": "미니원장(선물)",
+    "pm": {
+      "title": "차장",
+      "name": "박자영",
+      "phone": "8342"
+    },
+    "sub1": {
+      "title": "대리",
+      "name": "박준영",
+      "phone": "8334"
+    },
+    "sub2": {
+      "title": "사원",
+      "name": "구교현",
+      "phone": "8385"
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "선물주문",
+    "minorCategory": "CME주문",
+    "pm": {
+      "title": "차장",
+      "name": "박자영",
+      "phone": "8342"
+    },
+    "sub1": {
+      "title": "대리",
+      "name": "박준영",
+      "phone": "8334"
+    },
+    "sub2": {
+      "title": "사원",
+      "name": "구교현",
+      "phone": "8385"
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "선물결제",
+    "minorCategory": "선물결제",
+    "pm": {
+      "title": "사원",
+      "name": "김지은",
+      "phone": "8326"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "구교현",
+      "phone": "8385"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "선물결제",
+    "minorCategory": "수수료율관리",
+    "pm": {
+      "title": "사원",
+      "name": "김지은",
+      "phone": "8326"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "구교현",
+      "phone": "8385"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "선물결제",
+    "minorCategory": "선물감사",
+    "pm": {
+      "title": "차장",
+      "name": "박영철",
+      "phone": "8333"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "선물결제",
+    "minorCategory": "해외선물가원장",
+    "pm": {
+      "title": "차장",
+      "name": "박영철",
+      "phone": "8333"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "선물결제",
+    "minorCategory": "해외선물/FX마진",
+    "pm": {
+      "title": "차장",
+      "name": "박영철",
+      "phone": "8333"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "선물결제",
+    "minorCategory": "대외자료송신",
+    "pm": {
+      "title": "사원",
+      "name": "김지은",
+      "phone": "8326"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "구교현",
+      "phone": "8385"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "선물결제",
+    "minorCategory": "매매보고서",
+    "pm": {
+      "title": "사원",
+      "name": "김지은",
+      "phone": "8326"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "구교현",
+      "phone": "8385"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "해외주식",
+    "minorCategory": "해외주식 주문/결제",
+    "pm": {
+      "title": "차장",
+      "name": "이충현",
+      "phone": "8374"
+    },
+    "sub1": {
+      "title": "차장",
+      "name": "이지석",
+      "phone": "8392"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "외국인",
+    "minorCategory": "전체",
+    "pm": {
+      "title": "차장",
+      "name": "박영철",
+      "phone": "8333"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "PB매매업무팀",
+    "majorCategory": "HINT",
+    "minorCategory": "서버, 웹UI",
+    "pm": {
+      "title": "과장",
+      "name": "홍승표",
+      "phone": "8355"
+    },
+    "sub1": {
+      "title": "차장",
+      "name": "안석훈",
+      "phone": "8346"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융매체팀",
+    "majorCategory": "업무총괄",
+    "minorCategory": "",
+    "pm": {
+      "title": "팀장",
+      "name": "정문태",
+      "phone": "8349"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융매체팀",
+    "majorCategory": "MTS(모바일)",
+    "minorCategory": "ODS",
+    "pm": {
+      "title": "차장",
+      "name": "김윤형",
+      "phone": "7887"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "이해인",
+      "phone": "8336"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융매체팀",
+    "majorCategory": "MTS(모바일)",
+    "minorCategory": "PB 증권 MTS",
+    "pm": {
+      "title": "과장",
+      "name": "마영국",
+      "phone": "8344"
+    },
+    "sub1": {
+      "title": "과장",
+      "name": "김재경",
+      "phone": "7754"
+    },
+    "sub2": {
+      "title": "사원",
+      "name": "이원영",
+      "phone": "7876"
+    }
+  },
+  {
+    "team": "금융매체팀",
+    "majorCategory": "MTS(모바일)",
+    "minorCategory": "BNK MTS",
+    "pm": {
+      "title": "과장",
+      "name": "마영국",
+      "phone": "8344"
+    },
+    "sub1": {
+      "title": "과장",
+      "name": "김재경",
+      "phone": "7754"
+    },
+    "sub2": {
+      "title": "사원",
+      "name": "이해인",
+      "phone": "8336"
+    }
+  },
+  {
+    "team": "금융매체팀",
+    "majorCategory": "MTS(모바일)",
+    "minorCategory": "자산운용 모바일",
+    "pm": {
+      "title": "과장",
+      "name": "이수연",
+      "phone": "7845"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "조현성",
+      "phone": "7895"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융매체팀",
+    "majorCategory": "MTS(모바일)",
+    "minorCategory": "삼성자산운용",
+    "pm": {
+      "title": "사원",
+      "name": "조현성",
+      "phone": "7895"
+    },
+    "sub1": {
+      "title": "과장",
+      "name": "이수연",
+      "phone": "7845"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융매체팀",
+    "majorCategory": "MTS(모바일)",
+    "minorCategory": "Check 모바일",
+    "pm": {
+      "title": "과장",
+      "name": "김재경",
+      "phone": "7754"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "이원영",
+      "phone": "7876"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융매체팀",
+    "majorCategory": "MTS(모바일)",
+    "minorCategory": "클라이언트 엔진 플랫폼",
+    "pm": {
+      "title": "과장",
+      "name": "이수연",
+      "phone": "7845"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "이원영",
+      "phone": "7876"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융매체팀",
+    "majorCategory": "MTS(모바일)",
+    "minorCategory": "WEB/WAS 서버",
+    "pm": {
+      "title": "과장",
+      "name": "이수연",
+      "phone": "7845"
+    },
+    "sub1": {
+      "title": "과장",
+      "name": "마영국",
+      "phone": "8344"
+    },
+    "sub2": {
+      "title": "사원",
+      "name": "이해인",
+      "phone": "8336"
+    }
+  },
+  {
+    "team": "금융매체팀",
+    "majorCategory": "MTS(모바일)",
+    "minorCategory": "모바일 네이티브 앱 IOS",
+    "pm": {
+      "title": "과장",
+      "name": "김재경",
+      "phone": "7754"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "이해인",
+      "phone": "8336"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융매체팀",
+    "majorCategory": "MTS(모바일)",
+    "minorCategory": "모바일 네이티브 앱 Android",
+    "pm": {
+      "title": "사원",
+      "name": "조현성",
+      "phone": "7895"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "이원영",
+      "phone": "7876"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융매체팀",
+    "majorCategory": "클라이언트",
+    "minorCategory": "엔진플랫폼",
+    "pm": {
+      "title": "차장",
+      "name": "정진범",
+      "phone": "7809"
+    },
+    "sub1": {
+      "title": "팀장",
+      "name": "정문태",
+      "phone": "8349"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융매체팀",
+    "majorCategory": "클라이언트",
+    "minorCategory": "특화주문",
+    "pm": {
+      "title": "차장",
+      "name": "정진범",
+      "phone": "7809"
+    },
+    "sub1": {
+      "title": "팀장",
+      "name": "정문태",
+      "phone": "8349"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융매체팀",
+    "majorCategory": "클라이언트",
+    "minorCategory": "KRX PowerScreen 메인/통신",
+    "pm": {
+      "title": "팀장",
+      "name": "정문태",
+      "phone": "8349"
+    },
+    "sub1": {
+      "title": "차장",
+      "name": "정진범",
+      "phone": "7809"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융매체팀",
+    "majorCategory": "클라이언트",
+    "minorCategory": "KRX PowerScreen 마스터/컨트롤",
+    "pm": {
+      "title": "팀장",
+      "name": "정문태",
+      "phone": "8349"
+    },
+    "sub1": {
+      "title": "차장",
+      "name": "정진범",
+      "phone": "7809"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융매체팀",
+    "majorCategory": "HTS",
+    "minorCategory": "계정계 화면",
+    "pm": {
+      "title": "차석",
+      "name": "이기택",
+      "phone": "7875"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융매체팀",
+    "majorCategory": "WTS",
+    "minorCategory": "웹화면",
+    "pm": {
+      "title": "차석",
+      "name": "이기택",
+      "phone": "7875"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융매체팀",
+    "majorCategory": "WTS",
+    "minorCategory": "화면기획",
+    "pm": {
+      "title": "과장",
+      "name": "황재연",
+      "phone": "7896"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융채널팀",
+    "majorCategory": "업무총괄",
+    "minorCategory": "",
+    "pm": {
+      "title": "팀장",
+      "name": "곽평근",
+      "phone": "8331"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융채널팀",
+    "majorCategory": "대내외접속",
+    "minorCategory": "KRX 시장(공통/채권/일반상품 등) 접속",
+    "pm": {
+      "title": "대리",
+      "name": "채기운",
+      "phone": "8330"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "천유영",
+      "phone": "7863"
+    },
+    "sub2": {
+      "title": "차장",
+      "name": "김혁",
+      "phone": "7869"
+    }
+  },
+  {
+    "team": "금융채널팀",
+    "majorCategory": "대내외접속",
+    "minorCategory": "증권사(자체HTS,후처리,트레이딩 등)",
+    "pm": {
+      "title": "대리",
+      "name": "채기운",
+      "phone": "8330"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "천유영",
+      "phone": "7863"
+    },
+    "sub2": {
+      "title": "차장",
+      "name": "김혁",
+      "phone": "7869"
+    }
+  },
+  {
+    "team": "금융채널팀",
+    "majorCategory": "대내외접속",
+    "minorCategory": "대외기관",
+    "pm": {
+      "title": "대리",
+      "name": "채기운",
+      "phone": "8330"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "천유영",
+      "phone": "7863"
+    },
+    "sub2": {
+      "title": "차장",
+      "name": "김혁",
+      "phone": "7869"
+    }
+  },
+  {
+    "team": "금융채널팀",
+    "majorCategory": "대내외접속",
+    "minorCategory": "은행연계접속",
+    "pm": {
+      "title": "대리",
+      "name": "채기운",
+      "phone": "8330"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "천유영",
+      "phone": "7863"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융채널팀",
+    "majorCategory": "대내외접속",
+    "minorCategory": "소액지급결제",
+    "pm": {
+      "title": "대리",
+      "name": "채기운",
+      "phone": "8330"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "천유영",
+      "phone": "7863"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융채널팀",
+    "majorCategory": "외국인투자관리시스템(FEP)",
+    "minorCategory": "KRX/회원사/대외기관",
+    "pm": {
+      "title": "차장",
+      "name": "신모범",
+      "phone": "8562"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "안수진",
+      "phone": "8332"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융채널팀",
+    "majorCategory": "NFS/API",
+    "minorCategory": "KRX 시장 주문/체결",
+    "pm": {
+      "title": "차장",
+      "name": "신모범",
+      "phone": "8562"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "안수진",
+      "phone": "8332"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융채널팀",
+    "majorCategory": "NFS/API",
+    "minorCategory": "API(Client/Server/PB)",
+    "pm": {
+      "title": "차장",
+      "name": "신모범",
+      "phone": "8562"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "안수진",
+      "phone": "8332"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융채널팀",
+    "majorCategory": "NFS/API",
+    "minorCategory": "부산IDC",
+    "pm": {
+      "title": "차장",
+      "name": "신모범",
+      "phone": "8562"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "안수진",
+      "phone": "8332"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융채널팀",
+    "majorCategory": "NFS/API",
+    "minorCategory": "FIX API",
+    "pm": {
+      "title": "팀장",
+      "name": "곽평근",
+      "phone": "8331"
+    },
+    "sub1": {
+      "title": "차장",
+      "name": "신모범",
+      "phone": "8562"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융채널팀",
+    "majorCategory": "매체접속",
+    "minorCategory": "",
+    "pm": {
+      "title": "차장",
+      "name": "김성규",
+      "phone": "7829"
+    },
+    "sub1": {
+      "title": "대리",
+      "name": "오승준",
+      "phone": "7837"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융채널팀",
+    "majorCategory": "투자정보",
+    "minorCategory": "",
+    "pm": {
+      "title": "차장",
+      "name": "김성규",
+      "phone": "7829"
+    },
+    "sub1": {
+      "title": "대리",
+      "name": "오승준",
+      "phone": "7837"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "금융채널팀",
+    "majorCategory": "지점업무",
+    "minorCategory": "",
+    "pm": {
+      "title": "과장",
+      "name": "황윤동",
+      "phone": "7735"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "김준영",
+      "phone": "7849"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "시스템인프라팀",
+    "majorCategory": "업무총괄",
+    "minorCategory": "",
+    "pm": {
+      "title": "팀장",
+      "name": "김현수",
+      "phone": "8657"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "시스템인프라팀",
+    "majorCategory": "시스템 운영",
+    "minorCategory": "시스템관리",
+    "pm": {
+      "title": "차석",
+      "name": "최일근",
+      "phone": "8367"
+    },
+    "sub1": {
+      "title": "과장",
+      "name": "김철웅",
+      "phone": "8648"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "시스템인프라팀",
+    "majorCategory": "시스템 운영",
+    "minorCategory": "시스템구축",
+    "pm": {
+      "title": "차석",
+      "name": "최일근",
+      "phone": "8367"
+    },
+    "sub1": {
+      "title": "과장",
+      "name": "김철웅",
+      "phone": "8648"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "시스템인프라팀",
+    "majorCategory": "시스템 운영",
+    "minorCategory": "네트워크, 방화벽",
+    "pm": {
+      "title": "과장",
+      "name": "김동원",
+      "phone": "8276"
+    },
+    "sub1": {
+      "title": "과장",
+      "name": "김철웅",
+      "phone": "8648"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "시스템인프라팀",
+    "majorCategory": "시스템 운영",
+    "minorCategory": "보안관리, 기타시스템",
+    "pm": {
+      "title": "과장",
+      "name": "김철웅",
+      "phone": "8648"
+    },
+    "sub1": {
+      "title": "과장",
+      "name": "김동원",
+      "phone": "8276"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "서비스인프라팀",
+    "majorCategory": "업무총괄",
+    "minorCategory": "",
+    "pm": {
+      "title": "팀장",
+      "name": "박윤필",
+      "phone": "8076"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "서비스인프라팀",
+    "majorCategory": "DB 운영",
+    "minorCategory": "계정계 DBMS",
+    "pm": {
+      "title": "차석",
+      "name": "함영식",
+      "phone": "8660"
+    },
+    "sub1": {
+      "title": "대리",
+      "name": "김수현",
+      "phone": "8659"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "서비스인프라팀",
+    "majorCategory": "DB 운영",
+    "minorCategory": "AML∙MTS∙레그테크 DBMS",
+    "pm": {
+      "title": "차장",
+      "name": "신인하",
+      "phone": "8677"
+    },
+    "sub1": {
+      "title": "사원",
+      "name": "최보경",
+      "phone": "8657"
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "서비스인프라팀",
+    "majorCategory": "프레임워크",
+    "minorCategory": "계정계 프레임워크",
+    "pm": {
+      "title": "차장",
+      "name": "이동호",
+      "phone": "8671"
+    },
+    "sub1": {
+      "title": "과장",
+      "name": "임인호",
+      "phone": "8682"
+    },
+    "sub2": {
+      "title": "사원",
+      "name": "주형일",
+      "phone": "8605"
+    }
+  },
+  {
+    "team": "서비스인프라팀",
+    "majorCategory": "프레임워크",
+    "minorCategory": "모니터링",
+    "pm": {
+      "title": "사원",
+      "name": "주형일",
+      "phone": "8605"
+    },
+    "sub1": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    },
+    "sub2": {
+      "title": "",
+      "name": "",
+      "phone": ""
+    }
+  },
+  {
+    "team": "서비스인프라팀",
+    "majorCategory": "프레임워크",
+    "minorCategory": "배치관리",
+    "pm": {
+      "title": "차장",
+      "name": "이동호",
+      "phone": "8671"
+    },
+    "sub1": {
+      "title": "과장",
+      "name": "임인호",
+      "phone": "8682"
+    },
+    "sub2": {
+      "title": "사원",
+      "name": "주형일",
+      "phone": "8605"
+    }
+  }
+]
