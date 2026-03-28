@@ -96,6 +96,75 @@ export const documents = pgTable('documents', {
 })
 
 // ==================
+// Phase 2: Activities & Reminders
+// ==================
+
+export const activities = pgTable('activities', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').notNull().references(() => users.id),
+  organizationId: uuid('organization_id').references(() => organizations.id),
+  contactId: uuid('contact_id').references(() => contacts.id),
+  dealId: uuid('deal_id'),
+
+  type: text('type', {
+    enum: ['call', 'email', 'visit', 'meeting', 'contract', 'billing', 'inspection', 'other'],
+  }),
+  rawContent: text('raw_content').notNull(),
+  parsedContent: jsonb('parsed_content'),
+  // { summary, keywords[], amounts[], dates[], entities[] }
+
+  activityDate: timestamp('activity_date', { withTimezone: true }).notNull().defaultNow(),
+  source: text('source', { enum: ['manual', 'csv_import', 'voice'] }).notNull().default('manual'),
+  aiClassified: boolean('ai_classified').notNull().default(false),
+  aiConfidence: integer('ai_confidence'),
+
+  // 파이프라인 상태
+  pipelineStatus: text('pipeline_status', {
+    enum: ['pending', 'processing', 'completed', 'failed'],
+  }).notNull().default('pending'),
+
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+})
+
+export const reminders = pgTable('reminders', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').notNull().references(() => users.id),
+  activityId: uuid('activity_id').references(() => activities.id),
+  organizationId: uuid('organization_id').references(() => organizations.id),
+
+  title: text('title').notNull(),
+  description: text('description'),
+  dueDate: timestamp('due_date', { withTimezone: true }).notNull(),
+  priority: text('priority', { enum: ['critical', 'high', 'medium', 'low'] }).notNull().default('medium'),
+  status: text('status', { enum: ['pending', 'completed', 'overdue', 'cancelled'] }).notNull().default('pending'),
+
+  aiExtracted: boolean('ai_extracted').notNull().default(false),
+  sourceText: text('source_text'),
+  completedAt: timestamp('completed_at', { withTimezone: true }),
+
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+})
+
+export const importBatches = pgTable('import_batches', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').notNull().references(() => users.id),
+  fileName: text('file_name'),
+  totalRows: integer('total_rows').notNull().default(0),
+  processedRows: integer('processed_rows').notNull().default(0),
+  successRows: integer('success_rows').notNull().default(0),
+  failedRows: integer('failed_rows').notNull().default(0),
+  status: text('status', {
+    enum: ['uploading', 'parsing', 'processing', 'completed', 'failed'],
+  }).notNull().default('uploading'),
+  errors: jsonb('errors'),
+  startedAt: timestamp('started_at', { withTimezone: true }),
+  completedAt: timestamp('completed_at', { withTimezone: true }),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+})
+
+// ==================
 // Type exports
 // ==================
 
@@ -108,3 +177,8 @@ export type Product = typeof products.$inferSelect
 export type Document = typeof documents.$inferSelect
 export type NewDocument = typeof documents.$inferInsert
 export type AiLog = typeof aiLogs.$inferSelect
+export type Activity = typeof activities.$inferSelect
+export type NewActivity = typeof activities.$inferInsert
+export type Reminder = typeof reminders.$inferSelect
+export type NewReminder = typeof reminders.$inferInsert
+export type ImportBatch = typeof importBatches.$inferSelect

@@ -12,10 +12,12 @@ import {
   Settings,
   Sparkles,
   ContactRound,
+  ClipboardList,
 } from 'lucide-react'
 
 const navigation = [
   { name: '홈', href: '/', icon: Home },
+  { name: '영업 활동', href: '/activities', icon: ClipboardList },
   { name: '고객사', href: '/organizations', icon: Building2 },
   { name: '담당자 찾기', href: '/contacts', icon: ContactRound },
   { name: '문서', href: '/documents', icon: FileText },

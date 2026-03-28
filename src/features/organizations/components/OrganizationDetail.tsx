@@ -1,11 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { Building2, Users, FileText, StickyNote } from 'lucide-react'
+import { useQuery } from '@tanstack/react-query'
+import { Building2, Users, FileText, StickyNote, Clock, Phone, Mail, MapPin } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { ORG_SIZES } from '@/lib/constants'
-import { formatDate } from '@/lib/utils/format'
-import type { Organization, Contact } from '@/lib/db/schema'
+import { formatDate, formatRelativeTime } from '@/lib/utils/format'
+import type { Organization, Contact, Activity } from '@/lib/db/schema'
+import type { ApiResponse } from '@/types/api'
 
 interface OrganizationDetailProps {
   organization: Organization
@@ -14,13 +16,28 @@ interface OrganizationDetailProps {
 
 const tabs = [
   { key: 'overview', label: '개요', icon: Building2 },
+  { key: 'timeline', label: '활동 타임라인', icon: Clock },
   { key: 'contacts', label: '담당자', icon: Users },
-  { key: 'documents', label: '문서', icon: FileText },
   { key: 'notes', label: '메모', icon: StickyNote },
 ] as const
 
+const TYPE_ICONS: Record<string, typeof Phone> = {
+  call: Phone, email: Mail, visit: MapPin, meeting: Users,
+  contract: FileText, other: Clock,
+}
+
 export function OrganizationDetail({ organization, contacts }: OrganizationDetailProps) {
   const [activeTab, setActiveTab] = useState<string>('overview')
+
+  const { data: timelineActivities = [] } = useQuery<Activity[]>({
+    queryKey: ['activities', 'org', organization.id],
+    queryFn: async () => {
+      const res = await fetch(`/api/activities?organizationId=${organization.id}&limit=50`)
+      const json: ApiResponse<Activity[]> = await res.json()
+      return json.data ?? []
+    },
+    enabled: activeTab === 'timeline',
+  })
 
   return (
     <div className="space-y-6">
@@ -90,8 +107,33 @@ export function OrganizationDetail({ organization, contacts }: OrganizationDetai
             )}
           </div>
         )}
-        {activeTab === 'documents' && (
-          <p className="py-8 text-center text-[13px] text-slate-500">이 고객사와 관련된 문서가 없습니다.</p>
+        {activeTab === 'timeline' && (
+          <div className="space-y-3 max-h-[500px] overflow-y-auto">
+            {timelineActivities.length === 0 ? (
+              <p className="py-8 text-center text-[13px] text-slate-500">이 고객사의 활동 기록이 없습니다.</p>
+            ) : (
+              timelineActivities.map((activity) => {
+                const Icon = TYPE_ICONS[activity.type || 'other'] || Clock
+                const parsed = activity.parsedContent as Record<string, unknown> | null
+                return (
+                  <div key={activity.id} className="flex gap-3 rounded-xl border border-white/[0.03] bg-white/[0.02] p-3">
+                    <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/[0.04]">
+                      <Icon className="h-3.5 w-3.5 text-slate-500" strokeWidth={1.8} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-0.5">
+                        <span className="text-[11px] text-slate-500">{formatRelativeTime(activity.activityDate)}</span>
+                        {activity.aiClassified && <span className="text-[9px] text-amber-500/50">AI</span>}
+                      </div>
+                      <p className="text-[12px] text-slate-300 line-clamp-3">
+                        {(parsed?.summary as string) || activity.rawContent.slice(0, 200)}
+                      </p>
+                    </div>
+                  </div>
+                )
+              })
+            )}
+          </div>
         )}
         {activeTab === 'notes' && (
           <div className="whitespace-pre-wrap text-[13px] text-slate-300">
