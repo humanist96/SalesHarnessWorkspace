@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { ClipboardList, Phone, Mail, MapPin, Handshake, FileCheck, Sparkles } from 'lucide-react'
 import { PageHeader } from '@/components/shared/PageHeader'
@@ -20,13 +21,27 @@ const TYPE_CONFIG: Record<string, { label: string; icon: typeof Phone; color: st
   other: { label: '기타', icon: ClipboardList, color: 'bg-slate-500/10 text-slate-400 border-slate-500/20' },
 }
 
+const ACTIVITY_TYPES = [
+  { value: '', label: '전체' },
+  { value: 'call', label: '전화' },
+  { value: 'email', label: '이메일' },
+  { value: 'visit', label: '방문' },
+  { value: 'meeting', label: '미팅' },
+  { value: 'contract', label: '계약' },
+  { value: 'billing', label: '빌링' },
+  { value: 'other', label: '기타' },
+]
+
 export default function ActivitiesPage() {
   const queryClient = useQueryClient()
+  const [typeFilter, setTypeFilter] = useState('')
 
   const { data: activityList, isLoading } = useQuery<Activity[]>({
-    queryKey: ['activities'],
+    queryKey: ['activities', typeFilter],
     queryFn: async () => {
-      const res = await fetch('/api/activities?limit=100')
+      const params = new URLSearchParams({ limit: '100' })
+      if (typeFilter) params.set('type', typeFilter)
+      const res = await fetch(`/api/activities?${params}`)
       const json: ApiResponse<Activity[]> = await res.json()
       return json.data ?? []
     },
@@ -56,9 +71,26 @@ export default function ActivitiesPage() {
         {/* 오른쪽: 활동 목록 */}
         <div className="col-span-3">
           <div className="glass-card rounded-2xl p-6">
-            <h2 className="mb-4 text-[15px] font-semibold text-white">
-              최근 활동 ({activityList?.length || 0}건)
-            </h2>
+            <div className="mb-4 flex items-center justify-between">
+              <h2 className="text-[15px] font-semibold text-white">
+                최근 활동 ({activityList?.length || 0}건)
+              </h2>
+              <div className="flex gap-1">
+                {ACTIVITY_TYPES.map((t) => (
+                  <button
+                    key={t.value}
+                    onClick={() => setTypeFilter(t.value)}
+                    className={`rounded-full px-2.5 py-1 text-[10px] font-medium transition-all ${
+                      typeFilter === t.value
+                        ? 'bg-amber-500/15 text-amber-400'
+                        : 'bg-white/[0.03] text-slate-500 hover:bg-white/[0.06] hover:text-slate-300'
+                    }`}
+                  >
+                    {t.label}
+                  </button>
+                ))}
+              </div>
+            </div>
 
             {isLoading ? (
               <div className="space-y-3">

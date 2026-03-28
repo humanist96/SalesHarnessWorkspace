@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { useQuery } from '@tanstack/react-query'
 import { motion } from 'motion/react'
 import {
   TrendingUp,
@@ -13,7 +14,29 @@ import {
   Clock,
   Target,
   Zap,
+  Phone,
+  Mail,
+  MapPin,
+  Handshake,
+  FileCheck,
+  ClipboardList,
+  AlertCircle,
 } from 'lucide-react'
+import { formatRelativeTime } from '@/lib/utils/format'
+import type { Activity, Reminder } from '@/lib/db/schema'
+import type { ApiResponse } from '@/types/api'
+
+interface DashboardData {
+  stats: {
+    totalActivities: number
+    weekActivities: number
+    pendingReminders: number
+    overdueReminders: number
+  }
+  recentActivities: Activity[]
+  recentReminders: Reminder[]
+  activityTypeCounts: { type: string | null; count: number }[]
+}
 
 const container = {
   hidden: { opacity: 0 },
@@ -33,10 +56,42 @@ const item = {
   },
 }
 
+const TYPE_ICONS: Record<string, typeof Phone> = {
+  call: Phone,
+  email: Mail,
+  visit: MapPin,
+  meeting: Handshake,
+  contract: FileCheck,
+  billing: ClipboardList,
+  other: ClipboardList,
+}
+
+const TYPE_LABELS: Record<string, string> = {
+  call: '전화',
+  email: '이메일',
+  visit: '방문',
+  meeting: '미팅',
+  contract: '계약',
+  billing: '빌링',
+  other: '기타',
+}
+
 export default function DashboardPage() {
   const hour = new Date().getHours()
   const greeting =
     hour < 12 ? '좋은 아침입니다' : hour < 18 ? '좋은 오후입니다' : '수고하셨습니다'
+
+  const { data: dashboard, isLoading } = useQuery<DashboardData>({
+    queryKey: ['dashboard'],
+    queryFn: async () => {
+      const res = await fetch('/api/dashboard')
+      const json: ApiResponse<DashboardData> = await res.json()
+      return json.data!
+    },
+  })
+
+  const stats = dashboard?.stats
+  const totalReminders = (stats?.pendingReminders ?? 0) + (stats?.overdueReminders ?? 0)
 
   return (
     <motion.div
@@ -57,8 +112,7 @@ export default function DashboardPage() {
             })}
           </p>
           <h1 className="mt-1 text-[28px] font-bold tracking-tight text-white">
-            {greeting},{' '}
-            <span className="shimmer-text">김영업</span>님
+            {greeting}
           </h1>
         </div>
         <Link href="/documents/new">
@@ -76,42 +130,38 @@ export default function DashboardPage() {
       {/* Stat Cards */}
       <div className="grid grid-cols-4 gap-4">
         <StatCard
-          title="진행중 딜"
-          value="12"
-          change="+3 이번 달"
+          title="전체 활동"
+          value={isLoading ? '-' : String(stats?.totalActivities ?? 0)}
+          change={`이번 주 ${stats?.weekActivities ?? 0}건`}
           icon={Target}
           color="blue"
-          delay={0}
         />
         <StatCard
-          title="이번주 미팅"
-          value="5"
-          change="오늘 2건"
+          title="이번주 활동"
+          value={isLoading ? '-' : String(stats?.weekActivities ?? 0)}
+          change={`전체 ${stats?.totalActivities ?? 0}건`}
           icon={Calendar}
           color="emerald"
-          delay={1}
-        />
-        <StatCard
-          title="예상 매출"
-          value="8.5억"
-          change="+12% 전월 대비"
-          icon={TrendingUp}
-          color="amber"
-          delay={2}
         />
         <StatCard
           title="후속조치"
-          value="3"
-          change="긴급 1건"
+          value={isLoading ? '-' : String(totalReminders)}
+          change={stats?.overdueReminders ? `지연 ${stats.overdueReminders}건` : '지연 없음'}
           icon={Clock}
-          color="rose"
-          delay={3}
+          color={stats?.overdueReminders ? 'rose' : 'amber'}
+        />
+        <StatCard
+          title="AI 분류율"
+          value={isLoading ? '-' : `${stats?.totalActivities ? Math.round((dashboard?.activityTypeCounts?.reduce((s, c) => s + (c.type ? c.count : 0), 0) ?? 0) / stats.totalActivities * 100) : 0}%`}
+          change="자동 분류 완료"
+          icon={Sparkles}
+          color="amber"
         />
       </div>
 
       {/* Main Grid */}
       <div className="grid grid-cols-3 gap-4">
-        {/* Today's Actions — spans 2 cols */}
+        {/* Pending Reminders — spans 2 cols */}
         <motion.div
           variants={item}
           className="glass-card col-span-2 rounded-2xl p-6"
@@ -119,90 +169,97 @@ export default function DashboardPage() {
           <div className="mb-5 flex items-center justify-between">
             <h2 className="flex items-center gap-2 text-[15px] font-semibold text-white">
               <Zap className="h-4 w-4 text-amber-400" strokeWidth={2} />
-              오늘 할 일
+              후속조치 현황
+              {totalReminders > 0 && (
+                <span className="ml-1 rounded-full bg-rose-500/10 px-2 py-0.5 text-[11px] font-semibold text-rose-400">
+                  {totalReminders}건
+                </span>
+              )}
             </h2>
-            <Link href="/documents" className="text-[12px] text-slate-500 transition-colors hover:text-amber-400">
+            <Link href="/activities" className="text-[12px] text-slate-500 transition-colors hover:text-amber-400">
               전체 보기
             </Link>
           </div>
 
-          <div className="space-y-2">
-            <ActionItem
-              title="A증권 제안서 발송"
-              subtitle="PowerBase Pro 업그레이드 제안"
-              tag="제안서"
-              tagColor="blue"
-              time="오늘 17:00 마감"
-              urgent
-            />
-            <ActionItem
-              title="B증권 미팅 준비"
-              subtitle="차세대 시스템 관련 논의"
-              tag="미팅"
-              tagColor="emerald"
-              time="14:00 방문"
-            />
-            <ActionItem
-              title="C증권 후속 이메일"
-              subtitle="지난주 미팅 후속 — 견적서 전달"
-              tag="이메일"
-              tagColor="violet"
-              time="오전 중"
-            />
-            <ActionItem
-              title="주간 영업 보고서 작성"
-              subtitle="이번 주 활동 및 파이프라인 현황"
-              tag="보고서"
-              tagColor="amber"
-              time="금요일"
-            />
-          </div>
+          {isLoading ? (
+            <div className="space-y-2">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="h-16 animate-pulse rounded-xl bg-white/[0.04]" />
+              ))}
+            </div>
+          ) : !dashboard?.recentReminders?.length ? (
+            <div className="flex flex-col items-center justify-center py-8 text-center">
+              <Clock className="mb-2 h-8 w-8 text-slate-600" />
+              <p className="text-[13px] text-slate-500">대기 중인 후속조치가 없습니다</p>
+              <p className="mt-1 text-[11px] text-slate-600">활동을 기록하면 AI가 자동으로 후속조치를 추출합니다</p>
+            </div>
+          ) : (
+            <div className="space-y-2">
+              {dashboard.recentReminders.map((reminder) => (
+                <ReminderItem key={reminder.id} reminder={reminder} />
+              ))}
+            </div>
+          )}
         </motion.div>
 
-        {/* Upcoming Meetings */}
+        {/* Activity Type Breakdown */}
         <motion.div
           variants={item}
           className="glass-card rounded-2xl p-6"
         >
           <div className="mb-5 flex items-center justify-between">
             <h2 className="flex items-center gap-2 text-[15px] font-semibold text-white">
-              <Calendar className="h-4 w-4 text-emerald-400" strokeWidth={2} />
-              다가오는 미팅
+              <TrendingUp className="h-4 w-4 text-emerald-400" strokeWidth={2} />
+              활동 유형별 현황
             </h2>
           </div>
 
-          <div className="space-y-4">
-            <MeetingCard
-              time="14:00"
-              company="B증권"
-              topic="차세대 시스템 논의"
-              attendees={['김과장', '이대리']}
-              isToday
-            />
-            <MeetingCard
-              time="10:30"
-              company="D자산운용"
-              topic="PowerBase Core 데모"
-              attendees={['박팀장']}
-            />
-            <MeetingCard
-              time="15:00"
-              company="E증권"
-              topic="IT 운영대행 제안"
-              attendees={['최이사', '정과장']}
-            />
-          </div>
+          {isLoading ? (
+            <div className="space-y-3">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="h-8 animate-pulse rounded bg-white/[0.04]" />
+              ))}
+            </div>
+          ) : !dashboard?.activityTypeCounts?.length ? (
+            <p className="py-8 text-center text-[13px] text-slate-500">활동 데이터 없음</p>
+          ) : (
+            <div className="space-y-3">
+              {dashboard.activityTypeCounts
+                .filter((c) => c.type)
+                .sort((a, b) => b.count - a.count)
+                .map((typeCount) => {
+                  const total = dashboard.activityTypeCounts.reduce((s, c) => s + c.count, 0)
+                  const pct = total > 0 ? Math.round((typeCount.count / total) * 100) : 0
+                  return (
+                    <div key={typeCount.type} className="flex items-center gap-3">
+                      <span className="w-12 text-[11px] text-slate-400">
+                        {TYPE_LABELS[typeCount.type!] ?? typeCount.type}
+                      </span>
+                      <div className="flex-1 h-2 rounded-full bg-white/[0.06]">
+                        <div
+                          className="h-full rounded-full bg-gradient-to-r from-amber-400 to-amber-500"
+                          style={{ width: `${pct}%` }}
+                        />
+                      </div>
+                      <span className="w-10 text-right text-[11px] font-medium text-slate-300">
+                        {typeCount.count}건
+                      </span>
+                    </div>
+                  )
+                })}
+            </div>
+          )}
 
-          <Link href="/meetings" className="mt-4 flex w-full items-center justify-center gap-1 rounded-lg border border-white/[0.06] bg-white/[0.02] py-2 text-[12px] text-slate-500 transition-all duration-300 hover:border-white/[0.1] hover:text-slate-300">
-            전체 일정 보기
+          <Link href="/activities" className="mt-4 flex w-full items-center justify-center gap-1 rounded-lg border border-white/[0.06] bg-white/[0.02] py-2 text-[12px] text-slate-500 transition-all duration-300 hover:border-white/[0.1] hover:text-slate-300">
+            활동 기록하기
             <ArrowRight className="h-3 w-3" />
           </Link>
         </motion.div>
       </div>
 
-      {/* AI Insights + Pipeline */}
+      {/* Recent Activities + AI Quick Actions */}
       <div className="grid grid-cols-3 gap-4">
-        {/* AI Recommendations */}
+        {/* AI Quick Actions */}
         <motion.div
           variants={item}
           className="glass-card rounded-2xl p-6"
@@ -210,84 +267,87 @@ export default function DashboardPage() {
           <div className="mb-5 flex items-center justify-between">
             <h2 className="flex items-center gap-2 text-[15px] font-semibold text-white">
               <Sparkles className="h-4 w-4 text-amber-400" strokeWidth={2} />
-              AI 추천
+              AI 도구
             </h2>
           </div>
 
           <div className="space-y-3">
             <AICard
-              text="B증권 미팅 브리핑을 준비할까요?"
-              action="브리핑 생성"
+              text="AI 제안서를 생성해 드릴까요?"
+              action="제안서 생성"
               icon={FileText}
               href="/documents/new"
             />
             <AICard
-              text="A증권 제안서 초안을 작성해 드릴까요?"
-              action="제안서 생성"
-              icon={Sparkles}
-              href="/documents/new"
+              text="CSV 영업 데이터를 임포트할까요?"
+              action="데이터 임포트"
+              icon={TrendingUp}
+              href="/import"
             />
             <AICard
-              text="이번 주 시장 동향이 업데이트되었습니다"
+              text="영업 인텔리전스를 확인해보세요"
               action="확인하기"
-              icon={TrendingUp}
+              icon={Sparkles}
               href="/intelligence"
             />
           </div>
         </motion.div>
 
-        {/* Pipeline Summary — spans 2 cols */}
+        {/* Recent Activities — spans 2 cols */}
         <motion.div
           variants={item}
           className="glass-card col-span-2 rounded-2xl p-6"
         >
-          <div className="mb-6 flex items-center justify-between">
+          <div className="mb-5 flex items-center justify-between">
             <h2 className="flex items-center gap-2 text-[15px] font-semibold text-white">
-              <Target className="h-4 w-4 text-blue-400" strokeWidth={2} />
-              영업 파이프라인
+              <ClipboardList className="h-4 w-4 text-blue-400" strokeWidth={2} />
+              최근 활동
             </h2>
-            <div className="flex items-center gap-1 text-[12px] text-slate-500">
-              총 예상 매출
-              <span className="ml-1 font-semibold text-amber-400">₩8.5억</span>
+            <Link href="/activities" className="text-[12px] text-slate-500 transition-colors hover:text-amber-400">
+              전체 보기
+            </Link>
+          </div>
+
+          {isLoading ? (
+            <div className="space-y-2">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="h-16 animate-pulse rounded-xl bg-white/[0.04]" />
+              ))}
             </div>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <PipelineStage label="발굴" count={5} value="2.1억" color="slate" width="18%" />
-            <div className="text-slate-700">›</div>
-            <PipelineStage label="접촉" count={3} value="1.8억" color="blue" width="15%" />
-            <div className="text-slate-700">›</div>
-            <PipelineStage label="제안" count={2} value="2.5억" color="violet" width="22%" />
-            <div className="text-slate-700">›</div>
-            <PipelineStage label="협상" count={1} value="1.2억" color="amber" width="12%" />
-            <div className="text-slate-700">›</div>
-            <PipelineStage label="계약" count={1} value="0.9억" color="emerald" width="10%" />
-          </div>
-
-          {/* Recent Deals */}
-          <div className="mt-6 space-y-2">
-            <DealRow
-              company="A증권"
-              deal="PowerBase Pro 업그레이드"
-              stage="제안"
-              value="3.2억"
-              probability={65}
-            />
-            <DealRow
-              company="B증권"
-              deal="차세대 시스템 구축"
-              stage="접촉"
-              value="5.0억"
-              probability={30}
-            />
-            <DealRow
-              company="D자산운용"
-              deal="PowerBase Core 도입"
-              stage="발굴"
-              value="1.5억"
-              probability={20}
-            />
-          </div>
+          ) : !dashboard?.recentActivities?.length ? (
+            <div className="flex flex-col items-center justify-center py-8 text-center">
+              <ClipboardList className="mb-2 h-8 w-8 text-slate-600" />
+              <p className="text-[13px] text-slate-500">아직 활동 기록이 없습니다</p>
+              <Link href="/activities" className="mt-2 text-[12px] text-amber-400 hover:text-amber-300">
+                첫 활동 기록하기 →
+              </Link>
+            </div>
+          ) : (
+            <div className="space-y-2">
+              {dashboard.recentActivities.map((activity) => {
+                const TypeIcon = TYPE_ICONS[activity.type || 'other'] || ClipboardList
+                const parsed = activity.parsedContent as Record<string, unknown> | null
+                return (
+                  <div key={activity.id} className="flex items-center gap-4 rounded-lg border border-white/[0.03] bg-white/[0.02] px-4 py-2.5 transition-all duration-300 hover:border-white/[0.08] hover:bg-white/[0.04]">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/[0.04]">
+                      <TypeIcon className="h-4 w-4 text-slate-400" strokeWidth={1.8} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="truncate text-[13px] text-slate-300">
+                        {(parsed?.summary as string) || activity.rawContent.slice(0, 80)}
+                      </p>
+                    </div>
+                    <span className="shrink-0 rounded-full bg-white/[0.04] px-2 py-0.5 text-[10px] font-medium text-slate-400">
+                      {TYPE_LABELS[activity.type || 'other'] ?? activity.type}
+                    </span>
+                    <span className="shrink-0 text-[11px] text-slate-600">
+                      {formatRelativeTime(activity.activityDate)}
+                    </span>
+                  </div>
+                )
+              })}
+            </div>
+          )}
         </motion.div>
       </div>
     </motion.div>
@@ -302,14 +362,12 @@ function StatCard({
   change,
   icon: Icon,
   color,
-  delay,
 }: {
   title: string
   value: string
   change: string
   icon: React.ComponentType<{ className?: string; strokeWidth?: number }>
   color: 'blue' | 'emerald' | 'amber' | 'rose'
-  delay: number
 }) {
   const colors = {
     blue: { bg: 'from-blue-500/10 to-blue-600/5', text: 'text-blue-400', glow: 'shadow-blue-500/10' },
@@ -338,79 +396,29 @@ function StatCard({
   )
 }
 
-function ActionItem({
-  title,
-  subtitle,
-  tag,
-  tagColor,
-  time,
-  urgent,
-}: {
-  title: string
-  subtitle: string
-  tag: string
-  tagColor: string
-  time: string
-  urgent?: boolean
-}) {
-  const tagColors: Record<string, string> = {
-    blue: 'bg-blue-500/10 text-blue-400',
-    emerald: 'bg-emerald-500/10 text-emerald-400',
-    violet: 'bg-violet-500/10 text-violet-400',
-    amber: 'bg-amber-500/10 text-amber-400',
+function ReminderItem({ reminder }: { reminder: Reminder }) {
+  const isOverdue = reminder.status === 'overdue' || new Date(reminder.dueDate) < new Date()
+  const priorityColors: Record<string, string> = {
+    critical: 'bg-rose-500/10 text-rose-400',
+    high: 'bg-amber-500/10 text-amber-400',
+    medium: 'bg-blue-500/10 text-blue-400',
+    low: 'bg-slate-500/10 text-slate-400',
   }
 
   return (
     <div className="group flex items-center gap-4 rounded-xl border border-white/[0.03] bg-white/[0.02] px-4 py-3 transition-all duration-300 hover:border-white/[0.08] hover:bg-white/[0.04]">
-      <div className={`h-2 w-2 rounded-full ${urgent ? 'bg-amber-400 shadow-sm shadow-amber-400/50' : 'bg-slate-600'}`} />
+      <div className={`h-2 w-2 rounded-full ${isOverdue ? 'bg-rose-400 shadow-sm shadow-rose-400/50' : 'bg-amber-400 shadow-sm shadow-amber-400/50'}`} />
       <div className="flex-1 min-w-0">
-        <p className="text-[13px] font-medium text-slate-200">{title}</p>
-        <p className="mt-0.5 truncate text-[11px] text-slate-500">{subtitle}</p>
+        <p className="text-[13px] font-medium text-slate-200">{reminder.title}</p>
+        <p className="mt-0.5 truncate text-[11px] text-slate-500">{reminder.description}</p>
       </div>
-      <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold ${tagColors[tagColor]}`}>
-        {tag}
+      <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold ${priorityColors[reminder.priority]}`}>
+        {reminder.priority}
       </span>
-      <span className="shrink-0 text-[11px] text-slate-600">{time}</span>
-    </div>
-  )
-}
-
-function MeetingCard({
-  time,
-  company,
-  topic,
-  attendees,
-  isToday,
-}: {
-  time: string
-  company: string
-  topic: string
-  attendees: string[]
-  isToday?: boolean
-}) {
-  return (
-    <div className="group rounded-xl border border-white/[0.03] bg-white/[0.02] p-3.5 transition-all duration-300 hover:border-white/[0.08] hover:bg-white/[0.04]">
-      <div className="flex items-start justify-between">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="text-[13px] font-semibold text-white">{time}</span>
-            {isToday && (
-              <span className="rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[9px] font-semibold text-emerald-400">
-                오늘
-              </span>
-            )}
-          </div>
-          <p className="mt-1 text-[13px] font-medium text-slate-300">{company}</p>
-          <p className="mt-0.5 text-[11px] text-slate-500">{topic}</p>
-        </div>
-        <button className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/[0.06] bg-white/[0.03] opacity-0 transition-all duration-300 group-hover:opacity-100 hover:border-amber-500/30">
-          <Sparkles className="h-3.5 w-3.5 text-amber-400" />
-        </button>
-      </div>
-      <div className="mt-2 flex items-center gap-1">
-        <Users className="h-3 w-3 text-slate-600" />
-        <span className="text-[10px] text-slate-600">{attendees.join(', ')}</span>
-      </div>
+      <span className={`shrink-0 text-[11px] ${isOverdue ? 'font-semibold text-rose-400' : 'text-slate-600'}`}>
+        {isOverdue && <AlertCircle className="mr-1 inline h-3 w-3" />}
+        {formatRelativeTime(reminder.dueDate)}
+      </span>
     </div>
   )
 }
@@ -446,87 +454,5 @@ function AICard({
         </div>
       </motion.div>
     </Link>
-  )
-}
-
-function PipelineStage({
-  label,
-  count,
-  value,
-  color,
-  width,
-}: {
-  label: string
-  count: number
-  value: string
-  color: string
-  width: string
-}) {
-  const colors: Record<string, string> = {
-    slate: 'from-slate-500/20 to-slate-600/10 border-slate-500/20',
-    blue: 'from-blue-500/20 to-blue-600/10 border-blue-500/20',
-    violet: 'from-violet-500/20 to-violet-600/10 border-violet-500/20',
-    amber: 'from-amber-500/20 to-amber-600/10 border-amber-500/20',
-    emerald: 'from-emerald-500/20 to-emerald-600/10 border-emerald-500/20',
-  }
-
-  return (
-    <div className="flex-1">
-      <div
-        className={`rounded-lg border bg-gradient-to-b ${colors[color]} p-3 text-center transition-all duration-300 hover:scale-[1.02]`}
-      >
-        <p className="text-[18px] font-bold text-white">{count}</p>
-        <p className="text-[10px] font-medium text-slate-400">{label}</p>
-        <p className="mt-0.5 text-[10px] text-slate-500">{value}</p>
-      </div>
-    </div>
-  )
-}
-
-function DealRow({
-  company,
-  deal,
-  stage,
-  value,
-  probability,
-}: {
-  company: string
-  deal: string
-  stage: string
-  value: string
-  probability: number
-}) {
-  const stageColors: Record<string, string> = {
-    '발굴': 'bg-slate-500/10 text-slate-400',
-    '접촉': 'bg-blue-500/10 text-blue-400',
-    '제안': 'bg-violet-500/10 text-violet-400',
-    '협상': 'bg-amber-500/10 text-amber-400',
-    '계약': 'bg-emerald-500/10 text-emerald-400',
-  }
-
-  return (
-    <div className="flex items-center gap-4 rounded-lg border border-white/[0.03] bg-white/[0.02] px-4 py-2.5 transition-all duration-300 hover:border-white/[0.08] hover:bg-white/[0.04]">
-      <div className="w-20">
-        <p className="text-[12px] font-semibold text-slate-200">{company}</p>
-      </div>
-      <div className="flex-1 min-w-0">
-        <p className="truncate text-[12px] text-slate-400">{deal}</p>
-      </div>
-      <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold ${stageColors[stage]}`}>
-        {stage}
-      </span>
-      <div className="w-16 text-right">
-        <p className="text-[12px] font-semibold text-white">{value}</p>
-      </div>
-      <div className="w-12">
-        <div className="h-1.5 w-full rounded-full bg-white/[0.06]">
-          <div
-            className="h-full rounded-full bg-gradient-to-r from-amber-400 to-amber-500"
-            style={{ width: `${probability}%` }}
-          />
-        </div>
-        <p className="mt-0.5 text-right text-[9px] text-slate-600">{probability}%</p>
-      </div>
-    </div>
   )
 }

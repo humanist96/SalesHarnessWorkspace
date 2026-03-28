@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useQuery } from '@tanstack/react-query'
 import {
   Home,
   Building2,
@@ -14,20 +15,35 @@ import {
   ContactRound,
   ClipboardList,
 } from 'lucide-react'
+import type { Reminder } from '@/lib/db/schema'
+import type { ApiResponse } from '@/types/api'
 
 const navigation = [
-  { name: '홈', href: '/', icon: Home },
-  { name: '영업 활동', href: '/activities', icon: ClipboardList },
-  { name: '고객사', href: '/organizations', icon: Building2 },
-  { name: '담당자 찾기', href: '/contacts', icon: ContactRound },
-  { name: '문서', href: '/documents', icon: FileText },
-  { name: '미팅', href: '/meetings', icon: Calendar },
-  { name: '영업 현황', href: '/pipeline', icon: BarChart3 },
-  { name: '인텔리전스', href: '/intelligence', icon: Lightbulb },
+  { name: '홈', href: '/', icon: Home, badgeKey: null },
+  { name: '영업 활동', href: '/activities', icon: ClipboardList, badgeKey: 'activities' },
+  { name: '고객사', href: '/organizations', icon: Building2, badgeKey: null },
+  { name: '담당자 찾기', href: '/contacts', icon: ContactRound, badgeKey: null },
+  { name: '문서', href: '/documents', icon: FileText, badgeKey: null },
+  { name: '미팅', href: '/meetings', icon: Calendar, badgeKey: null },
+  { name: '영업 현황', href: '/pipeline', icon: BarChart3, badgeKey: null },
+  { name: '인텔리전스', href: '/intelligence', icon: Lightbulb, badgeKey: null },
 ]
 
 export function Sidebar() {
   const pathname = usePathname()
+
+  const { data: pendingReminders } = useQuery<Reminder[]>({
+    queryKey: ['reminders', 'sidebar'],
+    queryFn: async () => {
+      const res = await fetch('/api/reminders')
+      const json: ApiResponse<Reminder[]> = await res.json()
+      return json.data ?? []
+    },
+    refetchInterval: 60_000,
+  })
+
+  const reminderCount = pendingReminders?.length ?? 0
+  const overdueCount = pendingReminders?.filter((r) => r.status === 'overdue' || new Date(r.dueDate) < new Date()).length ?? 0
 
   return (
     <aside className="sidebar-gradient flex w-[260px] flex-col border-r border-white/[0.04]">
@@ -73,7 +89,17 @@ export function Sidebar() {
               />
               <span>{item.name}</span>
 
-              {isActive && (
+              {item.badgeKey === 'activities' && reminderCount > 0 && (
+                <span className={`ml-auto rounded-full px-1.5 py-0.5 text-[9px] font-bold ${
+                  overdueCount > 0
+                    ? 'bg-rose-500/15 text-rose-400'
+                    : 'bg-amber-500/15 text-amber-400'
+                }`}>
+                  {reminderCount}
+                </span>
+              )}
+
+              {isActive && !item.badgeKey && (
                 <div className="absolute right-3 h-1.5 w-1.5 rounded-full bg-amber-400 shadow-sm shadow-amber-400/50" />
               )}
             </Link>

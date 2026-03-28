@@ -27,13 +27,22 @@ export async function PATCH(request: NextRequest) {
   if (!session?.user?.id) return Response.json(createApiError('인증이 필요합니다.'), { status: 401 })
 
   const body = await request.json()
-  const { id, status } = body
+  const { id, status, dueDate } = body
 
-  const [updated] = await db.update(reminders).set({
-    status,
-    completedAt: status === 'completed' ? new Date() : null,
-    updatedAt: new Date(),
-  }).where(and(eq(reminders.id, id), eq(reminders.userId, session.user.id))).returning()
+  if (!id) return Response.json(createApiError('후속조치 ID가 필요합니다.'), { status: 400 })
+
+  // 연기(postpone): dueDate가 제공되면 기한 변경 + status를 pending으로 복귀
+  const updateData: Record<string, unknown> = { updatedAt: new Date() }
+
+  if (dueDate) {
+    updateData.dueDate = new Date(dueDate)
+    updateData.status = 'pending'
+  } else if (status) {
+    updateData.status = status
+    updateData.completedAt = status === 'completed' ? new Date() : null
+  }
+
+  const [updated] = await db.update(reminders).set(updateData).where(and(eq(reminders.id, id), eq(reminders.userId, session.user.id))).returning()
 
   if (!updated) return Response.json(createApiError('후속조치를 찾을 수 없습니다.'), { status: 404 })
   return Response.json(createApiResponse(updated))

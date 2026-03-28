@@ -165,6 +165,29 @@ export const importBatches = pgTable('import_batches', {
 })
 
 // ==================
+// Phase 2: Meetings
+// ==================
+
+export const meetings = pgTable('meetings', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').notNull().references(() => users.id),
+  organizationId: uuid('organization_id').references(() => organizations.id),
+
+  title: text('title').notNull(),
+  scheduledAt: timestamp('scheduled_at', { withTimezone: true }).notNull(),
+  location: text('location'),
+  attendees: jsonb('attendees'), // [{ contactId?, name, role }]
+  agenda: text('agenda'),
+  notes: text('notes'),
+  aiSummary: text('ai_summary'),
+  aiBriefing: text('ai_briefing'),
+  status: text('status', { enum: ['scheduled', 'completed', 'cancelled'] }).notNull().default('scheduled'),
+
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+})
+
+// ==================
 // Type exports
 // ==================
 
@@ -182,3 +205,5 @@ export type NewActivity = typeof activities.$inferInsert
 export type Reminder = typeof reminders.$inferSelect
 export type NewReminder = typeof reminders.$inferInsert
 export type ImportBatch = typeof importBatches.$inferSelect
+export type Meeting = typeof meetings.$inferSelect
+export type NewMeeting = typeof meetings.$inferInsert

@@ -1,4 +1,4 @@
-import { db, activities, reminders, organizations } from '@/lib/db'
+import { db, activities, reminders, organizations, contacts } from '@/lib/db'
 import { eq, ilike, isNull, and } from 'drizzle-orm'
 import { classifyActivity, type ClassificationResult } from './classify'
 
@@ -45,6 +45,27 @@ export async function executeActivityPipeline(ctx: PipelineContext): Promise<Pip
         organizationId: matchedOrg.id,
       }).where(eq(activities.id, ctx.activityId))
       organizationMatched = true
+    }
+  }
+
+  // Stage 2b: 담당자 자동 매칭 (contactMention으로 contacts 테이블 검색)
+  if (classification.contactMention) {
+    const orgFilter = ctx.organizationId
+      ? and(
+          ilike(contacts.name, `%${classification.contactMention}%`),
+          eq(contacts.organizationId, ctx.organizationId),
+        )
+      : ilike(contacts.name, `%${classification.contactMention}%`)
+
+    const [matchedContact] = await db.select()
+      .from(contacts)
+      .where(orgFilter)
+      .limit(1)
+
+    if (matchedContact) {
+      await db.update(activities).set({
+        contactId: matchedContact.id,
+      }).where(eq(activities.id, ctx.activityId))
     }
   }
 

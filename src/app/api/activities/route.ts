@@ -10,11 +10,13 @@ export async function GET(request: NextRequest) {
   if (!session?.user?.id) return Response.json(createApiError('인증이 필요합니다.'), { status: 401 })
 
   const orgId = request.nextUrl.searchParams.get('organizationId')
+  const type = request.nextUrl.searchParams.get('type')
   const limit = parseInt(request.nextUrl.searchParams.get('limit') || '50')
 
-  const conditions = orgId
-    ? and(eq(activities.userId, session.user.id), eq(activities.organizationId, orgId))
-    : eq(activities.userId, session.user.id)
+  const filters = [eq(activities.userId, session.user.id)]
+  if (orgId) filters.push(eq(activities.organizationId, orgId))
+  if (type) filters.push(eq(activities.type, type as typeof activities.type.enumValues[number]))
+  const conditions = filters.length === 1 ? filters[0] : and(...filters)
 
   const result = await db.select()
     .from(activities)
