@@ -1,6 +1,7 @@
 'use client'
 
 import { useForm } from 'react-hook-form'
+import { useQuery } from '@tanstack/react-query'
 import { zodResolver } from '@/lib/validations/resolver'
 import { Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -10,12 +11,8 @@ import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { createEmailSchema, type CreateEmailInput } from '@/lib/validations/document'
 import { EMAIL_PURPOSES } from '@/lib/constants'
-
-const MOCK_ORGANIZATIONS = [
-  { id: '1', name: 'A증권' },
-  { id: '2', name: 'B증권' },
-  { id: '3', name: 'C자산운용' },
-]
+import type { Organization } from '@/lib/db/schema'
+import type { ApiResponse } from '@/types/api'
 
 interface EmailFormProps {
   onGenerate: (data: CreateEmailInput) => void
@@ -23,6 +20,15 @@ interface EmailFormProps {
 }
 
 export function EmailForm({ onGenerate, isGenerating }: EmailFormProps) {
+  const { data: organizations = [] } = useQuery<Organization[]>({
+    queryKey: ['organizations'],
+    queryFn: async () => {
+      const res = await fetch('/api/organizations')
+      const json: ApiResponse<Organization[]> = await res.json()
+      return json.data ?? []
+    },
+  })
+
   const {
     register,
     handleSubmit,
@@ -43,7 +49,7 @@ export function EmailForm({ onGenerate, isGenerating }: EmailFormProps) {
             <SelectValue placeholder="고객사를 선택하세요" />
           </SelectTrigger>
           <SelectContent className="border-white/[0.08] bg-[#1a2236]">
-            {MOCK_ORGANIZATIONS.map((org) => (
+            {organizations.map((org) => (
               <SelectItem key={org.id} value={org.id} className="text-[13px] text-slate-300">{org.name}</SelectItem>
             ))}
           </SelectContent>

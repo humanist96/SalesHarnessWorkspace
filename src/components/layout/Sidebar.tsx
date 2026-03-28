@@ -82,10 +82,10 @@ export function Sidebar() {
 
       <div className="p-3">
         {/* Quick action */}
-        <button className="mb-3 flex w-full items-center gap-3 rounded-lg bg-gradient-to-r from-amber-500/10 to-blue-500/10 px-3 py-2.5 text-[13px] font-medium text-amber-300 transition-all duration-300 hover:from-amber-500/15 hover:to-blue-500/15">
+        <Link href="/documents/new" className="mb-3 flex w-full items-center gap-3 rounded-lg bg-gradient-to-r from-amber-500/10 to-blue-500/10 px-3 py-2.5 text-[13px] font-medium text-amber-300 transition-all duration-300 hover:from-amber-500/15 hover:to-blue-500/15">
           <Sparkles className="h-4 w-4" strokeWidth={1.8} />
           <span>AI 제안서 만들기</span>
-        </button>
+        </Link>
 
         {/* Settings */}
         <Link

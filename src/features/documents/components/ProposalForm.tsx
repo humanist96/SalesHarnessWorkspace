@@ -1,31 +1,17 @@
 'use client'
 
 import { useForm } from 'react-hook-form'
+import { useQuery } from '@tanstack/react-query'
 import { zodResolver } from '@/lib/validations/resolver'
 import { Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { createProposalSchema, type CreateProposalInput } from '@/lib/validations/document'
 import { PROPOSAL_TYPES } from '@/lib/constants'
-
-// 목업 데이터 — Block G에서 실 데이터로 교체
-const MOCK_ORGANIZATIONS = [
-  { id: '1', name: 'A증권' },
-  { id: '2', name: 'B증권' },
-  { id: '3', name: 'C자산운용' },
-  { id: '4', name: 'D증권' },
-  { id: '5', name: 'E투자증권' },
-]
-
-const MOCK_PRODUCTS = [
-  { id: '1', name: 'PowerBase Core' },
-  { id: '2', name: 'PowerBase Pro' },
-  { id: '3', name: 'PowerBase Enterprise' },
-  { id: '4', name: 'IT 운영대행' },
-]
+import type { Organization, Product } from '@/lib/db/schema'
+import type { ApiResponse } from '@/types/api'
 
 interface ProposalFormProps {
   onGenerate: (data: CreateProposalInput) => void
@@ -33,6 +19,24 @@ interface ProposalFormProps {
 }
 
 export function ProposalForm({ onGenerate, isGenerating }: ProposalFormProps) {
+  const { data: organizations = [] } = useQuery<Organization[]>({
+    queryKey: ['organizations'],
+    queryFn: async () => {
+      const res = await fetch('/api/organizations')
+      const json: ApiResponse<Organization[]> = await res.json()
+      return json.data ?? []
+    },
+  })
+
+  const { data: products = [] } = useQuery<Product[]>({
+    queryKey: ['products'],
+    queryFn: async () => {
+      const res = await fetch('/api/products')
+      const json: ApiResponse<Product[]> = await res.json()
+      return json.data ?? []
+    },
+  })
+
   const {
     register,
     handleSubmit,
@@ -54,7 +58,7 @@ export function ProposalForm({ onGenerate, isGenerating }: ProposalFormProps) {
     const updated = current.includes(productId)
       ? current.filter((id) => id !== productId)
       : [...current, productId]
-    setValue('productIds', updated, { shouldValidate: true })
+    setValue('productIds', updated)
   }
 
   return (
@@ -67,7 +71,7 @@ export function ProposalForm({ onGenerate, isGenerating }: ProposalFormProps) {
             <SelectValue placeholder="고객사를 선택하세요" />
           </SelectTrigger>
           <SelectContent className="border-white/[0.08] bg-[#1a2236]">
-            {MOCK_ORGANIZATIONS.map((org) => (
+            {organizations.map((org) => (
               <SelectItem key={org.id} value={org.id} className="text-[13px] text-slate-300">
                 {org.name}
               </SelectItem>
@@ -83,7 +87,7 @@ export function ProposalForm({ onGenerate, isGenerating }: ProposalFormProps) {
       <div className="space-y-2">
         <Label className="text-[13px] text-slate-400">상품 (복수 선택 가능)</Label>
         <div className="grid grid-cols-2 gap-2">
-          {MOCK_PRODUCTS.map((product) => {
+          {products.map((product) => {
             const isSelected = selectedProducts.includes(product.id)
             return (
               <button

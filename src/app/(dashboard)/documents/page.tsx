@@ -1,10 +1,23 @@
+'use client'
+
+import { useQuery } from '@tanstack/react-query'
 import { FileText } from 'lucide-react'
 import { PageHeader } from '@/components/shared/PageHeader'
 import { EmptyState } from '@/components/shared/EmptyState'
+import { DocumentList } from '@/features/documents/components/DocumentList'
+import type { Document } from '@/lib/db/schema'
+import type { ApiResponse } from '@/types/api'
 
 export default function DocumentsPage() {
-  // TODO: Block G에서 실 데이터 조회
-  const documents: unknown[] = []
+  const { data: documents, isLoading } = useQuery<Document[]>({
+    queryKey: ['documents'],
+    queryFn: async () => {
+      const res = await fetch('/api/documents')
+      const json: ApiResponse<Document[]> = await res.json()
+      if (!json.success) throw new Error(json.error)
+      return json.data ?? []
+    },
+  })
 
   return (
     <div>
@@ -15,7 +28,13 @@ export default function DocumentsPage() {
         actionHref="/documents/new"
       />
 
-      {documents.length === 0 ? (
+      {isLoading ? (
+        <div className="space-y-3">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="h-16 animate-pulse rounded-xl bg-white/[0.04]" />
+          ))}
+        </div>
+      ) : !documents || documents.length === 0 ? (
         <EmptyState
           icon={FileText}
           title="아직 문서가 없습니다"
@@ -24,7 +43,16 @@ export default function DocumentsPage() {
           actionHref="/documents/new"
         />
       ) : (
-        <div>{/* TODO: DocumentList 컴포넌트 */}</div>
+        <DocumentList
+          documents={documents.map((d) => ({
+            id: d.id,
+            type: d.type,
+            title: d.title,
+            ai_generated: d.aiGenerated,
+            user_feedback: d.userFeedback,
+            created_at: String(d.createdAt),
+          }))}
+        />
       )}
     </div>
   )

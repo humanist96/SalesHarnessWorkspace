@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'motion/react'
 import {
   TrendingUp,
@@ -60,14 +61,16 @@ export default function DashboardPage() {
             <span className="shimmer-text">김영업</span>님
           </h1>
         </div>
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 px-5 py-2.5 text-[13px] font-semibold text-amber-950 shadow-lg shadow-amber-500/20 transition-shadow duration-300 hover:shadow-amber-500/30"
-        >
-          <Sparkles className="h-4 w-4" />
-          AI 제안서 생성
-        </motion.button>
+        <Link href="/documents/new">
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 px-5 py-2.5 text-[13px] font-semibold text-amber-950 shadow-lg shadow-amber-500/20 transition-shadow duration-300 hover:shadow-amber-500/30"
+          >
+            <Sparkles className="h-4 w-4" />
+            AI 제안서 생성
+          </motion.div>
+        </Link>
       </motion.div>
 
       {/* Stat Cards */}
@@ -118,9 +121,9 @@ export default function DashboardPage() {
               <Zap className="h-4 w-4 text-amber-400" strokeWidth={2} />
               오늘 할 일
             </h2>
-            <button className="text-[12px] text-slate-500 transition-colors hover:text-amber-400">
+            <Link href="/documents" className="text-[12px] text-slate-500 transition-colors hover:text-amber-400">
               전체 보기
-            </button>
+            </Link>
           </div>
 
           <div className="space-y-2">
@@ -190,10 +193,10 @@ export default function DashboardPage() {
             />
           </div>
 
-          <button className="mt-4 flex w-full items-center justify-center gap-1 rounded-lg border border-white/[0.06] bg-white/[0.02] py-2 text-[12px] text-slate-500 transition-all duration-300 hover:border-white/[0.1] hover:text-slate-300">
+          <Link href="/meetings" className="mt-4 flex w-full items-center justify-center gap-1 rounded-lg border border-white/[0.06] bg-white/[0.02] py-2 text-[12px] text-slate-500 transition-all duration-300 hover:border-white/[0.1] hover:text-slate-300">
             전체 일정 보기
             <ArrowRight className="h-3 w-3" />
-          </button>
+          </Link>
         </motion.div>
       </div>
 
@@ -216,16 +219,19 @@ export default function DashboardPage() {
               text="B증권 미팅 브리핑을 준비할까요?"
               action="브리핑 생성"
               icon={FileText}
+              href="/documents/new"
             />
             <AICard
               text="A증권 제안서 초안을 작성해 드릴까요?"
               action="제안서 생성"
               icon={Sparkles}
+              href="/documents/new"
             />
             <AICard
               text="이번 주 시장 동향이 업데이트되었습니다"
               action="확인하기"
               icon={TrendingUp}
+              href="/intelligence"
             />
           </div>
         </motion.div>
@@ -413,29 +419,33 @@ function AICard({
   text,
   action,
   icon: Icon,
+  href,
 }: {
   text: string
   action: string
   icon: React.ComponentType<{ className?: string; strokeWidth?: number }>
+  href: string
 }) {
   return (
-    <motion.div
-      whileHover={{ scale: 1.01 }}
-      className="group cursor-pointer rounded-xl border border-amber-500/[0.08] bg-gradient-to-r from-amber-500/[0.04] to-transparent p-3.5 transition-all duration-300 hover:border-amber-500/20 hover:from-amber-500/[0.08]"
-    >
-      <div className="flex items-start gap-3">
-        <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-amber-500/10">
-          <Icon className="h-3.5 w-3.5 text-amber-400" strokeWidth={2} />
+    <Link href={href}>
+      <motion.div
+        whileHover={{ scale: 1.01 }}
+        className="group cursor-pointer rounded-xl border border-amber-500/[0.08] bg-gradient-to-r from-amber-500/[0.04] to-transparent p-3.5 transition-all duration-300 hover:border-amber-500/20 hover:from-amber-500/[0.08]"
+      >
+        <div className="flex items-start gap-3">
+          <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-amber-500/10">
+            <Icon className="h-3.5 w-3.5 text-amber-400" strokeWidth={2} />
+          </div>
+          <div className="flex-1">
+            <p className="text-[12px] leading-relaxed text-slate-300">{text}</p>
+            <p className="mt-1.5 flex items-center gap-1 text-[11px] font-semibold text-amber-400 transition-colors group-hover:text-amber-300">
+              {action}
+              <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+            </p>
+          </div>
         </div>
-        <div className="flex-1">
-          <p className="text-[12px] leading-relaxed text-slate-300">{text}</p>
-          <p className="mt-1.5 flex items-center gap-1 text-[11px] font-semibold text-amber-400 transition-colors group-hover:text-amber-300">
-            {action}
-            <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
-          </p>
-        </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </Link>
   )
 }
 
