@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { Sparkles, Send } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -9,6 +9,8 @@ import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { toast } from 'sonner'
 import { ClassificationBadges } from './ClassificationBadges'
+import { ActivitySuggestPanel } from './ActivitySuggestPanel'
+import { useActivitySuggestions } from '../hooks/useActivitySuggestions'
 import { isV2Content } from '@/lib/pipeline/parse-content'
 import type { Organization } from '@/lib/db/schema'
 import type { ApiResponse } from '@/types/api'
@@ -27,6 +29,11 @@ export function ActivityForm({ onSuccess }: ActivityFormProps) {
   const [organizationId, setOrganizationId] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [pipelineResult, setPipelineResult] = useState<Record<string, unknown> | null>(null)
+  const [showSuggestions, setShowSuggestions] = useState(false)
+  const blurTimeoutRef = useRef<ReturnType<typeof setTimeout>>(null)
+
+  const { suggestions, templates, isLoading: suggestLoading, compositionHandlers } =
+    useActivitySuggestions(rawContent, organizationId)
 
   const { data: organizations = [] } = useQuery<Organization[]>({
     queryKey: ['organizations'],
@@ -97,12 +104,43 @@ export function ActivityForm({ onSuccess }: ActivityFormProps) {
 
         <div className="space-y-2">
           <Label className="text-[13px] text-slate-400">활동 내용</Label>
-          <Textarea
-            value={rawContent}
-            onChange={(e) => setRawContent(e.target.value)}
-            placeholder="자유형식으로 입력하세요. AI가 자동으로 분류하고 후속조치를 추출합니다.&#10;&#10;예시: IBK 강용원 이사 통화, 부산은행 채권매도대행 회선비용 0.06억/년, 차주 계약 진행 예정"
-            className="min-h-[120px] border-white/[0.06] bg-white/[0.03] text-[14px] leading-relaxed text-slate-200 placeholder-slate-600"
-          />
+          <div className="relative">
+            <Textarea
+              value={rawContent}
+              onChange={(e) => {
+                setRawContent(e.target.value)
+                setShowSuggestions(true)
+              }}
+              onFocus={() => setShowSuggestions(true)}
+              onBlur={() => {
+                blurTimeoutRef.current = setTimeout(() => setShowSuggestions(false), 200)
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Escape') setShowSuggestions(false)
+              }}
+              onCompositionStart={compositionHandlers.onCompositionStart}
+              onCompositionEnd={compositionHandlers.onCompositionEnd}
+              placeholder="자유형식으로 입력하세요. AI가 자동으로 분류하고 후속조치를 추출합니다.&#10;&#10;예시: IBK 강용원 이사 통화, 부산은행 채권매도대행 회선비용 0.06억/년, 차주 계약 진행 예정"
+              className="min-h-[120px] border-white/[0.06] bg-white/[0.03] text-[14px] leading-relaxed text-slate-200 placeholder-slate-600"
+            />
+            <ActivitySuggestPanel
+              suggestions={suggestions}
+              templates={templates}
+              isLoading={suggestLoading}
+              visible={showSuggestions && (rawContent.length >= 5 || !!organizationId)}
+              onSelectSuggestion={(content, orgId) => {
+                if (blurTimeoutRef.current) clearTimeout(blurTimeoutRef.current)
+                setRawContent(content)
+                if (orgId) setOrganizationId(orgId)
+                setShowSuggestions(false)
+              }}
+              onSelectTemplate={(content) => {
+                if (blurTimeoutRef.current) clearTimeout(blurTimeoutRef.current)
+                setRawContent(content)
+                setShowSuggestions(false)
+              }}
+            />
+          </div>
           <p className="text-[11px] text-slate-600">{rawContent.length}자</p>
         </div>
 
