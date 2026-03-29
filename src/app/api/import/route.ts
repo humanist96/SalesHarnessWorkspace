@@ -73,10 +73,13 @@ export async function POST(request: NextRequest) {
         }
       }
 
+      // 원문 전체 맥락 구성 (CSV 행의 모든 컬럼 통합)
+      const fullRawContent = buildFullRawContent(row)
+
       // 활동 저장
       const [activity] = await db.insert(activities).values({
         userId: session.user.id,
-        rawContent: row.content.trim(),
+        rawContent: fullRawContent,
         organizationId,
         activityDate: row.date ? new Date(row.date.replace(/\./g, '-')) : new Date(),
         source: 'csv_import',
@@ -87,7 +90,7 @@ export async function POST(request: NextRequest) {
       try {
         await executeActivityPipeline({
           activityId: activity.id,
-          rawContent: row.content.trim(),
+          rawContent: fullRawContent,
           userId: session.user.id,
           organizationId,
         })
@@ -170,4 +173,26 @@ interface CsvRow {
   koscomContact: string
   content: string
   note: string
+}
+
+/** CSV 행의 모든 컬럼을 통합하여 원문 전체 맥락을 구성 */
+function buildFullRawContent(row: CsvRow): string {
+  const parts: string[] = []
+
+  // 헤더 메타 라인
+  const meta: string[] = []
+  if (row.date?.trim()) meta.push(row.date.trim())
+  if (row.customer?.trim()) meta.push(row.customer.trim())
+  if (row.method?.trim()) meta.push(row.method.trim())
+  if (row.customerContact?.trim()) meta.push(`담당: ${row.customerContact.trim()}`)
+  if (row.koscomContact?.trim()) meta.push(`코스콤: ${row.koscomContact.trim()}`)
+  if (meta.length > 0) parts.push(meta.join(' | '))
+
+  // 본문 내용
+  if (row.content?.trim()) parts.push(row.content.trim())
+
+  // 비고
+  if (row.note?.trim()) parts.push(`[비고] ${row.note.trim()}`)
+
+  return parts.join('\n')
 }

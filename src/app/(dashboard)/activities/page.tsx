@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { ClipboardList, Sparkles, Search } from 'lucide-react'
+import { ClipboardList, Sparkles, Search, Download } from 'lucide-react'
 import { PageHeader } from '@/components/shared/PageHeader'
 import { EmptyState } from '@/components/shared/EmptyState'
 import { ActivityForm } from '@/features/activities/components/ActivityForm'
@@ -81,6 +81,18 @@ export default function ActivitiesPage() {
                 <h2 className="text-[15px] font-semibold text-white">
                   최근 활동 ({activityList?.length || 0}건)
                 </h2>
+                <button
+                  onClick={() => {
+                    const a = document.createElement('a')
+                    a.href = '/api/activities/export?format=csv'
+                    a.download = ''
+                    a.click()
+                  }}
+                  className="flex items-center gap-1.5 rounded-lg bg-white/[0.04] px-3 py-1.5 text-[11px] text-slate-400 transition-colors hover:bg-white/[0.08] hover:text-slate-200"
+                >
+                  <Download className="h-3.5 w-3.5" />
+                  CSV 내보내기
+                </button>
               </div>
 
               {/* 수단 필터 */}
