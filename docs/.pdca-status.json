@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-03-29T00:13:22.149Z",
+  "lastUpdated": "2026-03-29T00:39:25.128Z",
   "activeFeatures": [
     "SalesHarnessWorkspace",
     "activity-insights-v2",
@@ -41,7 +41,8 @@
     "scripts",
     "classify",
     "reclassify",
-    "insights"
+    "insights",
+    "suggest"
   ],
   "primaryFeature": "SalesHarnessWorkspace",
   "features": {
@@ -60,6 +61,14 @@
       "startedAt": "2026-03-28T15:00:00.000Z",
       "archivedAt": "2026-03-28T16:00:00.000Z",
       "archivedTo": "docs/archive/2026-03/activity-insights-v2/"
+    },
+    "smart-compose": {
+      "phase": "archived",
+      "matchRate": 100,
+      "iterationCount": 0,
+      "startedAt": "2026-03-29T00:00:00.000Z",
+      "archivedAt": "2026-03-29T01:00:00.000Z",
+      "archivedTo": "docs/archive/2026-03/smart-compose/"
     },
     "(dashboard)": {
       "phase": "do",
@@ -369,9 +378,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T09:56:05.363Z",
-        "lastUpdated": "2026-03-28T14:07:13.593Z"
+        "lastUpdated": "2026-03-29T00:39:25.128Z"
       },
-      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/(dashboard)/activities/page.tsx"
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/features/activities/components/ActivityForm.tsx"
     },
     "reminders": {
       "phase": "do",
@@ -513,9 +522,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T13:07:14.224Z",
-        "lastUpdated": "2026-03-29T00:13:22.148Z"
+        "lastUpdated": "2026-03-29T00:37:12.622Z"
       },
-      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/scripts/check-insights.ts"
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/scripts/enable-trgm.ts"
     },
     "classify": {
       "phase": "do",
@@ -555,6 +564,19 @@
         "lastUpdated": "2026-03-28T14:00:52.584Z"
       },
       "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/features/insights/components/IntentDonut.tsx"
+    },
+    "suggest": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-29T00:37:49.025Z",
+        "lastUpdated": "2026-03-29T00:37:49.025Z"
+      },
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/src/app/api/activities/suggest/route.ts"
     }
   },
   "pipeline": {
@@ -565,7 +587,7 @@
   "session": {
     "startedAt": "2026-03-28T00:23:14.845Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-03-29T00:13:22.149Z"
+    "lastActivity": "2026-03-29T00:39:25.128Z"
   },
   "history": [
     {
@@ -1921,6 +1943,54 @@
     {
       "timestamp": "2026-03-29T00:13:22.148Z",
       "feature": "scripts",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-29T00:37:12.622Z",
+      "feature": "scripts",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-29T00:37:49.025Z",
+      "feature": "suggest",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-29T00:38:22.239Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-29T00:38:31.411Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-29T00:38:46.121Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-29T00:39:01.845Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-29T00:39:09.045Z",
+      "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-29T00:39:25.128Z",
+      "feature": "activities",
       "phase": "do",
       "action": "updated"
     }
