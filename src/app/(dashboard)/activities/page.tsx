@@ -13,7 +13,7 @@ import { ActivityDetailSheet } from '@/features/activities/components/ActivityDe
 import { ActivityViewTabs, type ViewMode } from '@/features/activities/components/ActivityViewTabs'
 import { CalendarView } from '@/features/activities/components/CalendarView'
 import { KanbanView } from '@/features/activities/components/KanbanView'
-import { INTENT_CONFIG, STAGE_CONFIG, ALL_INTENTS, ALL_STAGES, type SalesStage } from '@/lib/pipeline/types'
+import { INTENT_CONFIG, STAGE_CONFIG, ALL_INTENTS, ALL_STAGES } from '@/lib/pipeline/types'
 import type { Activity } from '@/lib/db/schema'
 import type { ApiResponse } from '@/types/api'
 
@@ -65,7 +65,7 @@ export default function ActivitiesPage() {
     setSheetOpen(true)
   }
 
-  const handleStageChange = useCallback(async (activityId: string, newStage: SalesStage) => {
+  const handleStageChange = useCallback(async (activityId: string, newStage: string) => {
     try {
       await fetch(`/api/activities/${activityId}/classify`, {
         method: 'PATCH',
