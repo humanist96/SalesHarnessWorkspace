@@ -1,7 +1,6 @@
 'use client'
 
 import { useDroppable } from '@dnd-kit/core'
-import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { motion } from 'motion/react'
 import { Inbox, Loader2, CheckCircle2 } from 'lucide-react'
 import { KanbanCard } from './KanbanCard'
@@ -12,6 +11,8 @@ const COLUMN_THEME: Record<KanbanStatus, {
   gradient: string
   text: string
   border: string
+  bg: string
+  overBg: string
   icon: typeof Inbox
   iconColor: string
 }> = {
@@ -19,6 +20,8 @@ const COLUMN_THEME: Record<KanbanStatus, {
     gradient: 'from-blue-500/20 to-transparent',
     text: 'text-blue-400',
     border: 'border-t-blue-500/50',
+    bg: 'bg-blue-500/[0.015]',
+    overBg: 'bg-blue-500/[0.06]',
     icon: Inbox,
     iconColor: 'text-blue-400',
   },
@@ -26,6 +29,8 @@ const COLUMN_THEME: Record<KanbanStatus, {
     gradient: 'from-amber-500/20 to-transparent',
     text: 'text-amber-400',
     border: 'border-t-amber-500/50',
+    bg: 'bg-amber-500/[0.015]',
+    overBg: 'bg-amber-500/[0.06]',
     icon: Loader2,
     iconColor: 'text-amber-400',
   },
@@ -33,6 +38,8 @@ const COLUMN_THEME: Record<KanbanStatus, {
     gradient: 'from-emerald-500/20 to-transparent',
     text: 'text-emerald-400',
     border: 'border-t-emerald-500/50',
+    bg: 'bg-emerald-500/[0.015]',
+    overBg: 'bg-emerald-500/[0.06]',
     icon: CheckCircle2,
     iconColor: 'text-emerald-400',
   },
@@ -58,8 +65,8 @@ export function KanbanColumn({ stage, label, activities, onActivityClick, column
       transition={{ delay: columnIndex * 0.1, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       className={`flex flex-col rounded-2xl border ${theme.border} border-t-2 transition-all duration-300 ${
         isOver
-          ? 'border-white/[0.15] bg-white/[0.05] shadow-[0_0_20px_rgba(255,255,255,0.03)]'
-          : 'border-white/[0.04] bg-white/[0.015]'
+          ? `border-white/[0.15] ${theme.overBg} shadow-[0_0_30px_rgba(255,255,255,0.04)]`
+          : `border-white/[0.04] ${theme.bg}`
       }`}
     >
       {/* 헤더 */}
@@ -73,31 +80,35 @@ export function KanbanColumn({ stage, label, activities, onActivityClick, column
         </div>
       </div>
 
-      {/* 카드 목록 */}
+      {/* 카드 목록 — droppable 영역 */}
       <div
         ref={setNodeRef}
-        className="flex-1 space-y-2 overflow-y-auto p-3"
+        className={`flex-1 space-y-2 overflow-y-auto p-3 transition-colors duration-200 ${
+          isOver ? 'bg-white/[0.02]' : ''
+        }`}
         style={{ maxHeight: '600px', minHeight: '200px' }}
       >
-        <SortableContext items={activities.map(a => a.id)} strategy={verticalListSortingStrategy}>
-          {activities.map((a, i) => (
-            <KanbanCard
-              key={a.id}
-              activity={a}
-              onClick={() => onActivityClick(a)}
-              index={i}
-            />
-          ))}
-        </SortableContext>
+        {activities.map((a, i) => (
+          <KanbanCard
+            key={a.id}
+            activity={a}
+            onClick={() => onActivityClick(a)}
+            index={i}
+          />
+        ))}
 
         {activities.length === 0 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="flex h-32 flex-col items-center justify-center rounded-xl border border-dashed border-white/[0.06]"
+            className={`flex h-32 flex-col items-center justify-center rounded-xl border-2 border-dashed transition-colors ${
+              isOver ? 'border-white/[0.15] bg-white/[0.03]' : 'border-white/[0.06]'
+            }`}
           >
             <Icon className={`h-6 w-6 ${theme.iconColor} opacity-30 mb-2`} />
-            <p className="text-[11px] text-slate-600">드래그하여 이동</p>
+            <p className="text-[11px] text-slate-600">
+              {isOver ? '여기에 놓기' : '드래그하여 이동'}
+            </p>
           </motion.div>
         )}
       </div>

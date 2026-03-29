@@ -42,17 +42,53 @@ interface CalendarDayCellProps {
   index: number
 }
 
-function getMiniLabel(activity: Activity): { org: string; text: string; color: string; dotColor: string } {
+/**
+ * 캘린더 미니 라벨 기준 (우선순위):
+ * 1순위: 고객사 축약명 (IBK투자증권→IBK, 중국은행→중국은행)
+ * 2순위: intent 한글 라벨 (계약갱신, 신규영업 등)
+ * 3순위: 상품명 첫 번째 (원장서비스, 회선 등)
+ * 4순위: rawContent 첫 8자 (fallback)
+ *
+ * 표시 형식: "[고객사] intent" (최대 12자)
+ */
+function getMiniLabel(activity: Activity): { label: string; color: string; dotColor: string } {
   const parsed = activity.parsedContent
   const v2 = isV2Content(parsed)
-  const org = v2 ? (parsed.organizationMention ?? '') : ''
-  const intent = v2 ? parsed.intent : null
-  const summary = getSummary(parsed) || activity.rawContent.slice(0, 30)
-  const shortOrg = org.replace(/투자증권|증권|은행/g, '').trim()
+
+  if (!v2) {
+    return {
+      label: activity.rawContent.slice(0, 10),
+      color: 'text-slate-500',
+      dotColor: 'bg-slate-500',
+    }
+  }
+
+  const intent = parsed.intent
+  const intentCfg = INTENT_CONFIG[intent as SalesIntent]
+  const intentLabel = intentCfg?.label ?? ''
+  const org = parsed.organizationMention ?? ''
+  const products = parsed.products ?? []
+
+  // 고객사 축약: "투자증권", "증권", "금융투자" 등 접미사 제거
+  const shortOrg = org
+    .replace(/투자증권|종합금융|금융투자|투자|증권|캐피탈/g, '')
+    .trim()
+
+  // 라벨 조합
+  let label = ''
+  if (shortOrg) {
+    label = shortOrg
+    if (intentLabel) label += ` ${intentLabel}`
+  } else if (intentLabel && products.length > 0) {
+    label = `${products[0]} ${intentLabel}`
+  } else if (intentLabel) {
+    label = intentLabel
+  } else {
+    label = activity.rawContent.slice(0, 10)
+  }
 
   return {
-    org: shortOrg || summary.slice(0, 6),
-    text: summary.slice(0, 20),
+    label: label.slice(0, 14),
     color: intent ? INTENT_TEXT_COLORS[intent] ?? 'text-slate-500' : 'text-slate-500',
     dotColor: intent ? INTENT_DOT_COLORS[intent] ?? 'bg-slate-500' : 'bg-slate-500',
   }
@@ -73,8 +109,8 @@ export function CalendarDayCell({
     return <div className="min-h-24 rounded-lg" />
   }
 
-  const items = activities.slice(0, 3).map(getMiniLabel)
-  const extraCount = activities.length - 3
+  const items = activities.slice(0, 2).map(getMiniLabel)
+  const extraCount = activities.length - 2
 
   return (
     <motion.button
@@ -118,12 +154,12 @@ export function CalendarDayCell({
           <div key={i} className="flex items-center gap-1 truncate">
             <span className={`h-1 w-1 shrink-0 rounded-full ${item.dotColor}`} />
             <span className={`truncate text-[8px] font-medium ${item.color}`}>
-              {item.org}
+              {item.label}
             </span>
           </div>
         ))}
         {extraCount > 0 && (
-          <span className="text-[8px] text-slate-600 pl-2">+{extraCount}건</span>
+          <span className="text-[8px] text-slate-600 pl-2">+{extraCount}</span>
         )}
       </div>
 
