@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-03-28T16:00:00.000Z",
+  "lastUpdated": "2026-03-29T00:13:22.149Z",
   "activeFeatures": [
     "SalesHarnessWorkspace",
     "activity-insights-v2",
@@ -513,9 +513,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-28T13:07:14.224Z",
-        "lastUpdated": "2026-03-28T13:13:26.274Z"
+        "lastUpdated": "2026-03-29T00:13:22.148Z"
       },
-      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/scripts/import-csv.ts"
+      "lastFile": "/Users/koscom/@work/SalesHarnessWorkspace/scripts/check-insights.ts"
     },
     "classify": {
       "phase": "do",
@@ -565,7 +565,7 @@
   "session": {
     "startedAt": "2026-03-28T00:23:14.845Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-03-28T14:07:13.593Z"
+    "lastActivity": "2026-03-29T00:13:22.149Z"
   },
   "history": [
     {
@@ -1903,6 +1903,24 @@
     {
       "timestamp": "2026-03-28T14:07:13.593Z",
       "feature": "activities",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T14:13:32.320Z",
+      "feature": "scripts",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-28T14:14:35.590Z",
+      "feature": "scripts",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-29T00:13:22.148Z",
+      "feature": "scripts",
       "phase": "do",
       "action": "updated"
     }
